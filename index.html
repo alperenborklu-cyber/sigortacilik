@@ -76,6 +76,9 @@
 </head>
 <body class="antialiased selection:bg-brand selection:text-white overflow-hidden">
 
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="fixed top-0 left-0 w-0 h-1 bg-brand z-[9999] transition-all duration-75"></div>
+
     <!-- Elegant Preloader -->
     <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white overflow-hidden transition-all duration-1000 ease-in-out">
         <div class="relative flex flex-col items-center max-w-xs text-center px-4">
@@ -162,7 +165,7 @@
                 <!-- Sol Taraf - Yazı ve Harekete Geçirici Mesaj -->
                 <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
                     <div class="inline-flex items-center gap-2.5 bg-brand/10 border border-brand/25 rounded-full px-5 py-2 text-xs text-brand font-bold tracking-wider uppercase mb-2 animate-fade-in">
-                        <i class="fa-solid fa-shield-halved text-sm text-brand-light"></i> %100 Güvenli ve Huzurlu Yarınlar
+                        <i class="fa-solid fa-shield-halved text-sm text-brand-light"></i> Güvenli ve Huzurlu Yarınlar
                     </div>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
                         Geleceğe <br>
@@ -736,6 +739,17 @@
             }
         }
         setInterval(rotateHeroBg, 5000); // 5 seconds interval
+
+        // Scroll Progress Bar Logic
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            const progressEl = document.getElementById('scroll-progress');
+            if (progressEl) {
+                progressEl.style.width = scrolled + '%';
+            }
+        });
     </script>
 </body>
 </html>

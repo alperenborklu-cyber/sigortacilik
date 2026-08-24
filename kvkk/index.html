@@ -38,6 +38,9 @@
 </head>
 <body class="antialiased selection:bg-brand selection:text-white overflow-hidden bg-neutral-soft">
 
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="fixed top-0 left-0 w-0 h-1 bg-brand z-[9999] transition-all duration-75"></div>
+
     <!-- Elegant Preloader -->
     <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white overflow-hidden transition-all duration-1000 ease-in-out">
         <div class="relative flex flex-col items-center max-w-xs text-center px-4">
@@ -275,6 +278,17 @@
         } else {
             initPreloader();
         }
+
+        // Scroll Progress Bar Logic
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            const progressEl = document.getElementById('scroll-progress');
+            if (progressEl) {
+                progressEl.style.width = scrolled + '%';
+            }
+        });
     </script>
 </body>
 </html>
