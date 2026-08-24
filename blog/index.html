@@ -169,6 +169,11 @@
 
             <!-- Modal İçeriği -->
             <div class="relative inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full">
+                <!-- Okuma İlerleme Çubuğu -->
+                <div class="w-full h-1 bg-gray-50 absolute top-0 left-0 right-0 z-20">
+                    <div id="modal-reading-progress" class="h-full bg-brand w-0 transition-all duration-100"></div>
+                </div>
+
                 <!-- Kapatma Butonu -->
                 <button onclick="closeBlogModal()" class="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-brand hover:text-white transition-all">
                     <i class="fa-solid fa-xmark text-lg"></i>
@@ -177,9 +182,21 @@
                 <div class="p-8 sm:p-12">
                     <div id="modal-badge" class="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-brand bg-brand-light mb-6">Kategori</div>
                     <h2 id="modal-title" class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 leading-tight">Yazı Başlığı</h2>
-                    <div class="flex items-center gap-4 text-xs text-gray-400 mb-8 font-light">
-                        <span id="modal-date"><i class="fa-regular fa-calendar mr-1.5"></i> Tarih</span>
-                        <span id="modal-read-time"><i class="fa-regular fa-clock mr-1.5"></i> Okuma Süresi</span>
+                    
+                    <div class="flex items-center gap-4 text-xs text-gray-400 mb-8 font-light flex-wrap justify-between border-b border-gray-100 pb-6">
+                        <div class="flex items-center gap-4">
+                            <span id="modal-date"><i class="fa-regular fa-calendar mr-1.5"></i> Tarih</span>
+                            <span id="modal-read-time"><i class="fa-regular fa-clock mr-1.5"></i> Okuma Süresi</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="shareOnWhatsApp()" class="text-gray-400 hover:text-[#25D366] transition-colors p-1" title="WhatsApp ile Paylaş">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </button>
+                            <button onclick="copyArticleLink()" class="text-gray-400 hover:text-brand transition-colors p-1" title="Bağlantıyı Kopyala">
+                                <i class="fa-solid fa-link text-sm"></i>
+                            </button>
+                            <span id="copy-success" class="text-[10px] text-brand font-medium hidden">Kopyalandı!</span>
+                        </div>
                     </div>
                     
                     <div id="modal-content" class="prose max-w-none text-gray-600 text-sm leading-relaxed space-y-6 font-light">
@@ -540,10 +557,18 @@
             renderBlogPosts(category);
         }
 
+        let activePostId = null;
+
         // Modal Açma Fonksiyonu
         function openBlogModal(id) {
             const post = blogPosts.find(p => p.id === id);
             if (!post) return;
+
+            activePostId = id;
+            
+            // Reset modal scroll progress bar width
+            const progressEl = document.getElementById('modal-reading-progress');
+            if (progressEl) progressEl.style.width = '0%';
 
             document.getElementById('modal-badge').innerText = post.categoryLabel;
             document.getElementById('modal-title').innerText = post.title;
@@ -553,6 +578,7 @@
 
             const modal = document.getElementById('blog-modal');
             modal.classList.remove('hidden');
+            modal.scrollTop = 0; // reset scroll to top
             document.body.style.overflow = 'hidden'; // Sayfa kaydırmasını engelle
         }
 
@@ -561,12 +587,49 @@
             const modal = document.getElementById('blog-modal');
             modal.classList.add('hidden');
             document.body.style.overflow = ''; // Sayfa kaydırmasını geri aç
+            activePostId = null;
+        }
+
+        // WhatsApp ve Link Paylaşım Fonksiyonları
+        function shareOnWhatsApp() {
+            if (!activePostId) return;
+            const post = blogPosts.find(p => p.id === activePostId);
+            if (post) {
+                const text = encodeURIComponent(`Blue Sky Sigorta Blog: "${post.title}" yazısını mutlaka okuyun! https://sigortacilik.vercel.app/blog/`);
+                window.open(`https://wa.me/?text=${text}`, '_blank');
+            }
+        }
+
+        function copyArticleLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const successEl = document.getElementById('copy-success');
+                if (successEl) {
+                    successEl.classList.remove('hidden');
+                    setTimeout(() => {
+                        successEl.classList.add('hidden');
+                    }, 2000);
+                }
+            });
         }
 
         // Sayfa yüklendiğinde blog yazılarını getir ve preloader'ı çalıştır
         function initPage() {
             try {
                 renderBlogPosts('all');
+                
+                // Modal Scroll Progress Bar listener
+                const modalEl = document.getElementById('blog-modal');
+                if (modalEl) {
+                    modalEl.addEventListener('scroll', () => {
+                        const winScroll = modalEl.scrollTop;
+                        const height = modalEl.scrollHeight - modalEl.clientHeight;
+                        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+                        const progressEl = document.getElementById('modal-reading-progress');
+                        if (progressEl) {
+                            progressEl.style.width = scrolled + '%';
+                        }
+                    });
+                }
             } catch (e) {
                 console.error("Error rendering blog posts:", e);
             }
@@ -638,5 +701,17 @@
             }
         });
     </script>
+
+    <!-- WhatsApp Yüzen Buton -->
+    <a href="https://wa.me/905533440666?text=Merhaba,%20Blue%20Sky%20Sigorta%20%C3%BCzerinden%20ula%C5%9F%C4%B1yorum.%20Teklif%20almak%20istiyorum." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-[999] bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl hover:bg-[#20ba5a] transition-all duration-300 hover:scale-110 active:scale-95 group"
+       aria-label="WhatsApp Canlı Destek">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="absolute right-16 bg-slate-900 text-white text-[10px] tracking-wider uppercase font-bold px-3 py-1.5 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap border border-slate-800 shadow-xl">
+            WhatsApp Destek
+        </span>
+    </a>
 </body>
 </html>
