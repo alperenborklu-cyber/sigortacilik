@@ -148,8 +148,15 @@
 
     <!-- Hero Bölümü -->
     <section class="relative overflow-hidden flex items-center min-h-screen">
-        <!-- Arka Plan Görseli (Güven Verici Canlı Görsel) -->
-        <img class="absolute inset-0 w-full h-full object-cover -z-20" src="trust_hero_bg_clean.jpg" alt="Blue Sky Sigorta Güvenli Gelecek">
+        <!-- Arka Plan Görselleri (Sırayla Değişen Güven Verici Görseller) -->
+        <div class="absolute inset-0 -z-20 overflow-hidden">
+            <img id="hero-bg-0" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" src="trust_hero_bg_clean.jpg" alt="Blue Sky Sigorta Güvenli Gelecek">
+            <img id="hero-bg-1" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_1.jpg" alt="Güvenli Gelecek">
+            <img id="hero-bg-2" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_2.jpg" alt="Finansal Koruma">
+            <img id="hero-bg-3" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_3.jpg" alt="Huzurlu Yuva">
+            <img id="hero-bg-4" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_4.jpg" alt="Aile Güvencesi">
+            <img id="hero-bg-5" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_5.jpg" alt="Güvenli Yolculuk">
+        </div>
         <!-- Karartma ve Renk Geçiş Overlay (Yazıların okunması için solda daha yoğun karartma) -->
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/60 to-transparent -z-10"></div>
 
@@ -697,8 +704,25 @@
                         bar.style.width = `${width}%`;
                     }
                 }
-            }, 120);
         });
+
+        // Hero Background Carousel Logic
+        let currentHeroBg = 0;
+        const totalHeroBgs = 6;
+        function rotateHeroBg() {
+            const nextHeroBg = (currentHeroBg + 1) % totalHeroBgs;
+            const currentEl = document.getElementById(`hero-bg-${currentHeroBg}`);
+            const nextEl = document.getElementById(`hero-bg-${nextHeroBg}`);
+            
+            if (currentEl && nextEl) {
+                currentEl.classList.remove('opacity-100');
+                currentEl.classList.add('opacity-0');
+                nextEl.classList.remove('opacity-0');
+                nextEl.classList.add('opacity-100');
+                currentHeroBg = nextHeroBg;
+            }
+        }
+        setInterval(rotateHeroBg, 5000); // 5 seconds interval
     </script>
 </body>
 </html>
