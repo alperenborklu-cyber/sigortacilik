@@ -901,21 +901,25 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         counters.forEach(counter => {
-                            const updateCount = () => {
-                                const target = +counter.getAttribute('data-target');
-                                const count = +counter.innerText;
-                                // Adjust increment speed based on size
-                                const speed = target > 100 ? 50 : 25;
-                                const inc = target / speed;
+                            const target = +counter.getAttribute('data-target');
+                            const duration = 2500; // 2.5 saniye animasyon süresi
+                            let startTime = null;
+
+                            const animate = (currentTime) => {
+                                if (!startTime) startTime = currentTime;
+                                const elapsedTime = currentTime - startTime;
+                                const progress = Math.min(elapsedTime / duration, 1);
+                                const currentCount = Math.floor(progress * target);
                                 
-                                if (count < target) {
-                                    counter.innerText = Math.ceil(count + inc);
-                                    setTimeout(updateCount, 30);
+                                counter.innerText = currentCount;
+                                
+                                if (progress < 1) {
+                                    requestAnimationFrame(animate);
                                 } else {
                                     counter.innerText = target;
                                 }
                             };
-                            updateCount();
+                            requestAnimationFrame(animate);
                         });
                         // Stop observing once animation triggered
                         observer.unobserve(counterSection);
