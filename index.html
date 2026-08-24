@@ -152,9 +152,8 @@
         <div class="absolute inset-0 -z-20 overflow-hidden">
             <img id="hero-bg-0" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" src="trust_hero_bg_clean.jpg" alt="Blue Sky Sigorta Güvenli Gelecek">
             <img id="hero-bg-1" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_1.jpg" alt="Güvenli Gelecek">
-            <img id="hero-bg-2" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_2.jpg" alt="Finansal Koruma">
-            <img id="hero-bg-3" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_3.jpg" alt="Huzurlu Yuva">
-            <img id="hero-bg-4" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_4.jpg" alt="Aile Güvencesi">
+            <img id="hero-bg-2" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_3.jpg" alt="Huzurlu Yuva">
+            <img id="hero-bg-3" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_4.jpg" alt="Aile Güvencesi">
         </div>
         <!-- Karartma ve Renk Geçiş Overlay (Yazıların okunması için solda daha yoğun karartma) -->
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/60 to-transparent -z-10"></div>
@@ -722,7 +721,7 @@
 
         // Hero Background Carousel Logic
         let currentHeroBg = 0;
-        const totalHeroBgs = 5;
+        const totalHeroBgs = 4;
         function rotateHeroBg() {
             const nextHeroBg = (currentHeroBg + 1) % totalHeroBgs;
             const currentEl = document.getElementById(`hero-bg-${currentHeroBg}`);
