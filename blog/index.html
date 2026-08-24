@@ -560,51 +560,68 @@
         }
 
         // Sayfa yüklendiğinde blog yazılarını getir ve preloader'ı çalıştır
-        window.addEventListener('DOMContentLoaded', () => {
-            renderBlogPosts('all');
+        function initPage() {
+            try {
+                renderBlogPosts('all');
+            } catch (e) {
+                console.error("Error rendering blog posts:", e);
+            }
 
-            const preloader = document.getElementById('preloader');
-            const bar = document.getElementById('preloader-bar');
-            const text = document.getElementById('preloader-text');
-            
-            // 1. Fade in the loading text slightly after load starts
-            setTimeout(() => {
-                if (text) {
-                    text.classList.remove('opacity-0', 'translate-y-2');
-                    text.classList.add('opacity-80', 'translate-y-0');
-                }
-            }, 100);
-
-            // 2. Animate progress bar from 0% to 100%
-            let width = 0;
-            const interval = setInterval(() => {
-                if (width >= 100) {
-                    clearInterval(interval);
-                    
-                    // 3. Smooth exit transition of the preloader screen
-                    setTimeout(() => {
-                        if (preloader) {
-                            preloader.classList.add('opacity-0', 'pointer-events-none');
-                            preloader.style.transform = 'translateY(-30px)';
-                            
-                            // Re-enable scrolling on the body
-                            document.body.classList.remove('overflow-hidden');
-                            
-                            setTimeout(() => {
-                                preloader.remove();
-                            }, 1000);
-                        }
-                    }, 200);
-                } else {
-                    // Modern stepped loading speed
-                    width += Math.floor(Math.random() * 20) + 10;
-                    if (width > 100) width = 100;
-                    if (bar) {
-                        bar.style.width = `${width}%`;
+            try {
+                const preloader = document.getElementById('preloader');
+                const bar = document.getElementById('preloader-bar');
+                const text = document.getElementById('preloader-text');
+                
+                // 1. Fade in the loading text slightly after load starts
+                setTimeout(() => {
+                    if (text) {
+                        text.classList.remove('opacity-0', 'translate-y-2');
+                        text.classList.add('opacity-80', 'translate-y-0');
                     }
-                }
-            }, 120);
-        });
+                }, 100);
+
+                // 2. Animate progress bar from 0% to 100%
+                let width = 0;
+                const interval = setInterval(() => {
+                    if (width >= 100) {
+                        clearInterval(interval);
+                        
+                        // 3. Smooth exit transition of the preloader screen
+                        setTimeout(() => {
+                            if (preloader) {
+                                preloader.classList.add('opacity-0', 'pointer-events-none');
+                                preloader.style.transform = 'translateY(-30px)';
+                                
+                                // Re-enable scrolling on the body
+                                document.body.classList.remove('overflow-hidden');
+                                
+                                setTimeout(() => {
+                                    preloader.remove();
+                                }, 1000);
+                            }
+                        }, 200);
+                    } else {
+                        // Modern stepped loading speed
+                        width += Math.floor(Math.random() * 20) + 10;
+                        if (width > 100) width = 100;
+                        if (bar) {
+                            bar.style.width = `${width}%`;
+                        }
+                    }
+                }, 120);
+            } catch (e) {
+                console.error("Preloader error:", e);
+                document.body.classList.remove('overflow-hidden');
+                const preloader = document.getElementById('preloader');
+                if (preloader) preloader.remove();
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
     </script>
 </body>
 </html>
