@@ -147,7 +147,7 @@
     </header>
 
     <!-- Hero Bölümü -->
-    <section class="relative overflow-hidden flex items-center min-h-screen pt-32 pb-16 lg:py-0">
+    <section class="relative overflow-hidden flex items-center min-h-screen">
         <!-- Arka Plan Görseli (Güven Verici Canlı Görsel) -->
         <img class="absolute inset-0 w-full h-full object-cover -z-20" src="trust_hero_bg_clean.jpg" alt="Blue Sky Sigorta Güvenli Gelecek">
         <!-- Karartma ve Renk Geçiş Overlay (Yazıların okunması için solda daha yoğun karartma) -->
@@ -177,73 +177,8 @@
                     </div>
                 </div>
                 
-                <!-- Sağ Taraf - Güven Veren Görseller (Sonsuz Döngü) -->
-                <div class="lg:col-span-5 w-full relative group">
-                    <div class="relative h-[300px] sm:h-[420px] w-full overflow-hidden rounded-2xl shadow-2xl border border-white/10 bg-slate-900/40 backdrop-blur-md">
-                        <!-- Carousel Wrapper -->
-                        <div class="absolute inset-0 w-full h-full flex transition-transform duration-1000 ease-in-out" id="hero-carousel">
-                            <!-- Slide 1: Aile -->
-                            <div class="w-full h-full shrink-0 relative">
-                                <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80" alt="Mutlu Aile" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                                <div class="absolute bottom-6 left-6 right-6">
-                                    <span class="bg-brand text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-2 inline-block">Aile Güvencesi</span>
-                                    <h3 class="text-white text-lg font-bold">Huzurlu Yarınlar</h3>
-                                    <p class="text-gray-300 text-xs mt-1 font-light">Ailenizin sağlığı ve geleceği güvende.</p>
-                                </div>
-                            </div>
-                            <!-- Slide 2: Konut -->
-                            <div class="w-full h-full shrink-0 relative">
-                                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80" alt="Güvenli Ev" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                                <div class="absolute bottom-6 left-6 right-6">
-                                    <span class="bg-brand text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-2 inline-block">Konut Sigortası</span>
-                                    <h3 class="text-white text-lg font-bold">Yuvanız Koruma Altında</h3>
-                                    <p class="text-gray-300 text-xs mt-1 font-light">En değerli sığınağınız deprem ve tüm risklere karşı güvende.</p>
-                                </div>
-                            </div>
-                            <!-- Slide 3: Kasko -->
-                            <div class="w-full h-full shrink-0 relative">
-                                <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=800&q=80" alt="Kasko" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                                <div class="absolute bottom-6 left-6 right-6">
-                                    <span class="bg-brand text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-2 inline-block">Araç Kasko</span>
-                                    <h3 class="text-white text-lg font-bold">Güvenli Yolculuklar</h3>
-                                    <p class="text-gray-300 text-xs mt-1 font-light">Yoldaki her anınızda koruyucu gölgeniz yanınızda.</p>
-                                </div>
-                            </div>
-                            <!-- Slide 4: Sağlık -->
-                            <div class="w-full h-full shrink-0 relative">
-                                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" alt="Sağlık" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                                <div class="absolute bottom-6 left-6 right-6">
-                                    <span class="bg-brand text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-2 inline-block">Sağlık Sigortası</span>
-                                    <h3 class="text-white text-lg font-bold">Önceliğimiz Sağlığınız</h3>
-                                    <p class="text-gray-300 text-xs mt-1 font-light">En seçkin hastanelerde kusursuz hizmet ayrıcalığı.</p>
-                                </div>
-                            </div>
-                            <!-- Slide 5: İş/Finans -->
-                            <div class="w-full h-full shrink-0 relative">
-                                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="İşyeri ve Finans" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                                <div class="absolute bottom-6 left-6 right-6">
-                                    <span class="bg-brand text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-2 inline-block">İşyeri & Finans</span>
-                                    <h3 class="text-white text-lg font-bold">Yatırımlarınız Güvende</h3>
-                                    <p class="text-gray-300 text-xs mt-1 font-light">Emeğiniz ve ticari geleceğiniz tam güvence altında.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Carousel İndikatörleri -->
-                        <div class="absolute bottom-4 right-6 flex gap-1.5 z-20" id="carousel-dots">
-                            <button class="w-2 h-2 rounded-full bg-white transition-all duration-300" onclick="setHeroSlide(0)"></button>
-                            <button class="w-2 h-2 rounded-full bg-white/40 transition-all duration-300" onclick="setHeroSlide(1)"></button>
-                            <button class="w-2 h-2 rounded-full bg-white/40 transition-all duration-300" onclick="setHeroSlide(2)"></button>
-                            <button class="w-2 h-2 rounded-full bg-white/40 transition-all duration-300" onclick="setHeroSlide(3)"></button>
-                            <button class="w-2 h-2 rounded-full bg-white/40 transition-all duration-300" onclick="setHeroSlide(4)"></button>
-                        </div>
-                    </div>
-                </div>
+                <!-- Sağ Taraf - Şık Negatif Boşluk -->
+                <div class="hidden lg:block lg:col-span-5"></div>
             </div>
         </div>
     </section>
@@ -679,53 +614,6 @@
                 icon.className = "fa-solid fa-bars text-xl";
             }
         }
-
-        // Hero Carousel Mantığı
-        let currentHeroSlide = 0;
-        const totalHeroSlides = 5;
-        const carouselEl = document.getElementById('hero-carousel');
-        const dotsContainer = document.getElementById('carousel-dots');
-        
-        function setHeroSlide(index) {
-            currentHeroSlide = index;
-            if (carouselEl) {
-                carouselEl.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
-            }
-            
-            if (dotsContainer) {
-                const dots = dotsContainer.getElementsByTagName('button');
-                for (let i = 0; i < dots.length; i++) {
-                    if (i === currentHeroSlide) {
-                        dots[i].classList.remove('bg-white/40');
-                        dots[i].classList.add('bg-white');
-                    } else {
-                        dots[i].classList.remove('bg-white');
-                        dots[i].classList.add('bg-white/40');
-                    }
-                }
-            }
-        }
-        
-        function nextHeroSlide() {
-            let nextSlide = (currentHeroSlide + 1) % totalHeroSlides;
-            setHeroSlide(nextSlide);
-        }
-        
-        // Otomatik geçiş (4 saniyede bir)
-        let heroCarouselInterval = setInterval(nextHeroSlide, 4000);
-        
-        // Fare üzerine gelince duraklat, çekilince devam et
-        document.addEventListener('DOMContentLoaded', () => {
-            const carouselParent = document.getElementById('hero-carousel')?.parentElement;
-            if (carouselParent) {
-                carouselParent.addEventListener('mouseenter', () => {
-                    clearInterval(heroCarouselInterval);
-                });
-                carouselParent.addEventListener('mouseleave', () => {
-                    heroCarouselInterval = setInterval(nextHeroSlide, 4000);
-                });
-            }
-        });
 
         // Hizmet kartından tıklayınca formu seçili sigorta türü ile otomatik doldurma
         function selectInsuranceType(type) {
