@@ -515,7 +515,21 @@
                 return;
             }
 
+            const slugMap = {
+                1: 'kaskovetrafiksigortasi',
+                2: 'konutvedepremsigortasi',
+                3: 'tamamlayicisagliksigortasi',
+                4: 'seyahatsagliksigortasi',
+                5: 'depremsigortasidask',
+                6: 'bireyselemekliliksistemi',
+                7: 'aracsigortaprimleri',
+                8: 'isyerisigortasi',
+                9: 'ozelsagliksigortasi',
+                10: 'sigortapolicelerindemuafiyet'
+            };
+
             filteredPosts.forEach(post => {
+                const slug = slugMap[post.id];
                 const card = `
                     <article class="group bg-white hover:bg-neutral-soft border border-gray-100 rounded-2xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between h-full">
                         <div>
@@ -523,16 +537,16 @@
                                 <i class="fa-solid ${post.icon} text-lg"></i>
                             </div>
                             <span class="text-[10px] font-bold uppercase tracking-widest text-brand mb-3 block">${post.categoryLabel}</span>
-                            <h3 class="text-lg font-bold text-gray-900 mb-4 group-hover:text-brand transition-colors line-clamp-2">${post.title}</h3>
+                            <a href="${slug}/"><h3 class="text-lg font-bold text-gray-900 mb-4 group-hover:text-brand transition-colors line-clamp-2">${post.title}</h3></a>
                             <p class="text-gray-400 text-xs leading-relaxed mb-8 font-light line-clamp-3">
                                 ${post.excerpt}
                             </p>
                         </div>
                         <div class="flex items-center justify-between pt-4 border-t border-gray-50 mt-auto">
                             <span class="text-[10px] text-gray-400 font-light">${post.date}</span>
-                            <button onclick="openBlogModal(${post.id})" class="text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                            <a href="${slug}/" class="text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
                                 Oku <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
-                            </button>
+                            </a>
                         </div>
                     </article>
                 `;
