@@ -8,7 +8,19 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Check local storage immediately to prevent flash, default is light mode
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+    <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -39,8 +51,6 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #374151;
         }
         /* Fade-in Animation */
         @keyframes fadeIn {
@@ -52,13 +62,13 @@
         }
     </style>
 </head>
-<body class="antialiased selection:bg-brand selection:text-white overflow-hidden">
+<body class="antialiased selection:bg-brand selection:text-white overflow-hidden bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress" class="fixed top-0 left-0 w-0 h-1 bg-brand z-[9999] transition-all duration-75"></div>
 
     <!-- Elegant Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white overflow-hidden transition-all duration-1000 ease-in-out">
+    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white dark:bg-slate-950 overflow-hidden transition-all duration-1000 ease-in-out">
         <div class="relative flex flex-col items-center max-w-xs text-center px-4">
             <!-- Logo with glowing background effect -->
             <div class="relative w-28 h-28 mb-8 flex items-center justify-center">
@@ -97,6 +107,9 @@
                     <a href="./" class="text-xs font-bold uppercase tracking-wider text-brand transition-colors">Blog</a>
                     <a href="../#teklif" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Teklif Al</a>
                     <a href="../#iletisim" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">İletişim</a>
+                    <button onclick="toggleDarkMode()" class="text-gray-500 hover:text-brand transition-colors focus:outline-none p-2" aria-label="Karanlık Mod">
+                        <i id="dark-mode-icon-desktop" class="fa-solid fa-moon text-lg"></i>
+                    </button>
                     <a href="../#teklif" class="inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-xs font-bold uppercase tracking-widest rounded-full text-gray-700 hover:border-brand hover:bg-brand hover:text-white transition-all duration-500">
                         Hızlı Teklif
                     </a>
@@ -120,6 +133,9 @@
                 <a href="./" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-brand font-bold">Blog</a>
                 <a href="../#teklif" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Teklif Al</a>
                 <a href="../#iletisim" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">İletişim</a>
+                <button onclick="toggleDarkMode(); toggleMobileMenu();" class="w-full py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand flex items-center justify-center gap-2 border-t border-gray-100 pt-4">
+                    <i id="dark-mode-icon-mobile" class="fa-solid fa-moon"></i> Gece Modu
+                </button>
                 <a href="../#teklif" onclick="toggleMobileMenu()" class="mt-4 block w-full py-3.5 text-center text-xs font-semibold uppercase tracking-widest text-white bg-brand hover:bg-brand-dark rounded-full transition-all duration-300">
                     Hızlı Teklif
                 </a>
@@ -128,12 +144,12 @@
     </header>
 
     <!-- Hero Bölümü -->
-    <section class="relative bg-white overflow-hidden py-16 lg:py-24 border-b border-gray-50">
-        <div class="absolute top-0 right-0 w-[30rem] h-[30rem] bg-brand-light/30 rounded-full filter blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+    <section class="relative bg-white dark:bg-slate-950 overflow-hidden py-16 lg:py-24 border-b border-gray-50 dark:border-slate-900 transition-colors duration-300">
+        <div class="absolute top-0 right-0 w-[30rem] h-[30rem] bg-brand-light/30 dark:bg-brand/5 rounded-full filter blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center">
             <span class="text-xs font-bold tracking-widest text-brand uppercase">Bilgi Merkezi</span>
-            <h1 class="mt-4 text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">Blue Sky Blog</h1>
-            <p class="mt-4 text-base text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
+            <h1 class="mt-4 text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white tracking-tight">Blue Sky Blog</h1>
+            <p class="mt-4 text-base text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
                 Sigorta dünyasındaki yenilikler, rehber içerikler ve hayatınızı güvence altına alırken işinize yarayacak pratik ipuçları.
             </p>
         </div>
@@ -531,14 +547,14 @@
             filteredPosts.forEach(post => {
                 const slug = slugMap[post.id];
                 const card = `
-                    <article class="group bg-white hover:bg-neutral-soft border border-gray-100 rounded-2xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between h-full">
+                    <article class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-2xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between h-full">
                         <div>
-                            <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
+                            <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
                                 <i class="fa-solid ${post.icon} text-lg"></i>
                             </div>
                             <span class="text-[10px] font-bold uppercase tracking-widest text-brand mb-3 block">${post.categoryLabel}</span>
-                            <a href="${slug}/"><h3 class="text-lg font-bold text-gray-900 mb-4 group-hover:text-brand transition-colors line-clamp-2">${post.title}</h3></a>
-                            <p class="text-gray-400 text-xs leading-relaxed mb-8 font-light line-clamp-3">
+                            <a href="${slug}/"><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 group-hover:text-brand transition-colors line-clamp-2">${post.title}</h3></a>
+                            <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-8 font-light line-clamp-3">
                                 ${post.excerpt}
                             </p>
                         </div>
@@ -703,6 +719,36 @@
         } else {
             initPage();
         }
+
+        // Karanlık / Aydınlık Mod Geçişi
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateDarkModeButtons(false);
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateDarkModeButtons(true);
+            }
+        }
+
+        function updateDarkModeButtons(isDark) {
+            const desktopIcon = document.getElementById('dark-mode-icon-desktop');
+            const mobileIcon = document.getElementById('dark-mode-icon-mobile');
+            if (isDark) {
+                if (desktopIcon) desktopIcon.className = "fa-solid fa-sun text-lg";
+                if (mobileIcon) mobileIcon.className = "fa-solid fa-sun";
+            } else {
+                if (desktopIcon) desktopIcon.className = "fa-solid fa-moon text-lg";
+                if (mobileIcon) mobileIcon.className = "fa-solid fa-moon";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            updateDarkModeButtons(isDark);
+        });
 
         // Scroll Progress Bar Logic
         window.addEventListener('scroll', () => {

@@ -8,7 +8,19 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Check local storage immediately to prevent flash, default is light mode
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+    <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -39,8 +51,6 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #111827;
         }
         /* Fade-in Animation */
         @keyframes fadeIn {
@@ -52,13 +62,13 @@
         }
     </style>
 </head>
-<body class="antialiased selection:bg-brand selection:text-white bg-neutral-soft">
+<body class="antialiased selection:bg-brand selection:text-white bg-neutral-soft dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress" class="fixed top-0 left-0 w-0 h-1 bg-brand z-[9999] transition-all duration-75"></div>
 
     <!-- Elegant Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white overflow-hidden transition-all duration-1000 ease-in-out">
+    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white dark:bg-slate-950 overflow-hidden transition-all duration-1000 ease-in-out">
         <div class="relative flex flex-col items-center max-w-xs text-center px-4">
             <div class="relative w-28 h-28 mb-8 flex items-center justify-center">
                 <div class="absolute inset-0 rounded-full bg-brand/10 blur-xl animate-pulse"></div>
@@ -91,6 +101,9 @@
                     <a href="../" class="text-xs font-bold uppercase tracking-wider text-brand transition-colors">Blog</a>
                     <a href="../../#teklif" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Teklif Al</a>
                     <a href="../../#iletisim" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">İletişim</a>
+                    <button onclick="toggleDarkMode()" class="text-gray-500 hover:text-brand transition-colors focus:outline-none p-2" aria-label="Karanlık Mod">
+                        <i id="dark-mode-icon-desktop" class="fa-solid fa-moon text-lg"></i>
+                    </button>
                     <a href="../../#teklif" class="inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-xs font-bold uppercase tracking-widest rounded-full text-gray-700 hover:border-brand hover:bg-brand hover:text-white transition-all duration-500">
                         Hızlı Teklif
                     </a>
@@ -114,6 +127,9 @@
                 <a href="../" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-brand font-bold">Blog</a>
                 <a href="../../#teklif" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Teklif Al</a>
                 <a href="../../#iletisim" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">İletişim</a>
+                <button onclick="toggleDarkMode(); toggleMobileMenu();" class="w-full py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand flex items-center justify-center gap-2 border-t border-gray-100 pt-4">
+                    <i id="dark-mode-icon-mobile" class="fa-solid fa-moon"></i> Gece Modu
+                </button>
                 <a href="../../#teklif" onclick="toggleMobileMenu()" class="mt-4 block w-full py-3.5 text-center text-xs font-semibold uppercase tracking-widest text-white bg-brand hover:bg-brand-dark rounded-full transition-all duration-300">
                     Hızlı Teklif
                 </a>
@@ -123,14 +139,14 @@
 
     <!-- İçerik Bölümü -->
     <main class="py-16 lg:py-24">
-        <article class="max-w-4xl mx-auto px-6 lg:px-8 bg-white rounded-3xl border border-gray-100 p-8 lg:p-12 shadow-sm">
-            <div class="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-brand bg-brand-light mb-6">Sağlık Sigortası</div>
+        <article class="max-w-4xl mx-auto px-6 lg:px-8 bg-white dark:bg-slate-900 rounded-3xl border border-gray-100 dark:border-slate-800 p-8 lg:p-12 shadow-sm transition-colors duration-300">
+            <div class="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-brand bg-brand-light dark:bg-brand/10 mb-6">Sağlık Sigortası</div>
             
-            <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                 Tamamlayıcı Sağlık Sigortası (TSS) Nedir ve Neden Gerekli?
             </h1>
 
-            <div class="flex items-center gap-4 text-xs text-gray-400 mb-8 font-light flex-wrap justify-between border-b border-gray-100 pb-6">
+            <div class="flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500 mb-8 font-light flex-wrap justify-between border-b border-gray-100 dark:border-slate-800/60 pb-6">
                 <div class="flex items-center gap-4">
                     <span><i class="fa-regular fa-calendar mr-1.5"></i> 15 Ağustos 2026</span>
                     <span><i class="fa-regular fa-clock mr-1.5"></i> 4 dk okuma</span>
@@ -148,11 +164,11 @@
 
             <div class="prose max-w-none text-gray-900 dark:text-white text-sm leading-relaxed space-y-6 font-normal">
                 
-            <p class="mb-4 text-gray-900 dark:text-white font-normal leading-relaxed">Tamamlayıcı Sağlık Sigortası (TSS), Sosyal Güvenlik Kurumu (SGK) kapsamında olan kişilerin, SGK anlaşmalı özel hastanelerde ek ücret (fark ücreti) ödemeden yüksek standartta sağlık hizmeti almasını sağlayan bir sigorta türüdür.</p>
+            <p class="mb-4 text-gray-900 dark:text-gray-100 font-normal leading-relaxed">Tamamlayıcı Sağlık Sigortası (TSS), Sosyal Güvenlik Kurumu (SGK) kapsamında olan kişilerin, SGK anlaşmalı özel hastanelerde ek ücret (fark ücreti) ödemeden yüksek standartta sağlık hizmeti almasını sağlayan bir sigorta türüdür.</p>
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-8 mb-4">TSS Nasıl Çalışır?</h3>
-            <p class="mb-4 text-gray-900 dark:text-white font-normal leading-relaxed">TSS sahibi olduğunuzda, SGK ile anlaşmalı bir özel hastaneye gittiğinizde muayene, tahlil, tetkik ve ameliyat gibi işlemler için cebinizden sadece yasal olarak zorunlu olan cüzi katılım payı (örneğin 15 TL devlet payı) çıkar. Geriye kalan tüm yüksek maliyetli masrafları sigorta şirketiniz doğrudan hastaneye öder.</p>
+            <p class="mb-4 text-gray-900 dark:text-gray-100 font-normal leading-relaxed">TSS sahibi olduğunuzda, SGK ile anlaşmalı bir özel hastaneye gittiğinizde muayene, tahlil, tetkik ve ameliyat gibi işlemler için cebinizden sadece yasal olarak zorunlu olan cüzi katılım payı (örneğin 15 TL devlet payı) çıkar. Geriye kalan tüm yüksek maliyetli masrafları sigorta şirketiniz doğrudan hastaneye öder.</p>
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-8 mb-4">TSS’nin Avantajları Nelerdir?</h3>
-            <ul class="list-disc pl-5 space-y-2 mb-4 text-gray-900 dark:text-white font-normal leading-relaxed">
+            <ul class="list-disc pl-5 space-y-2 mb-4 text-gray-900 dark:text-gray-100 font-normal leading-relaxed">
                 <li><strong>Ekonomik Primler:</strong> Özel Sağlık Sigortalarına göre çok daha bütçe dostudur.</li>
                 <li><strong>Geniş Hastane Ağı:</strong> Türkiye genelinde yüzlerce kaliteli özel hastanede geçerlidir.</li>
                 <li><strong>Yatarak ve Ayakta Tedavi Seçenekleri:</strong> Ameliyatlardan fizik tedaviye, rutin tahlillerden doktor muayenelerine kadar geniş kapsama sahiptir.</li>
@@ -160,7 +176,7 @@
         
             </div>
 
-            <div class="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
+            <div class="mt-12 pt-8 border-t border-gray-100 dark:border-slate-800/60 flex justify-between items-center">
                 <a href="../" class="inline-flex items-center text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark transition-colors gap-1.5">
                     <i class="fa-solid fa-chevron-left text-[10px]"></i> Blog'a Dön
                 </a>
@@ -234,6 +250,36 @@
                 icon.className = "fa-solid fa-bars text-xl";
             }
         }
+
+        // Karanlık / Aydınlık Mod Geçişi
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateDarkModeButtons(false);
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateDarkModeButtons(true);
+            }
+        }
+
+        function updateDarkModeButtons(isDark) {
+            const desktopIcon = document.getElementById('dark-mode-icon-desktop');
+            const mobileIcon = document.getElementById('dark-mode-icon-mobile');
+            if (isDark) {
+                if (desktopIcon) desktopIcon.className = "fa-solid fa-sun text-lg";
+                if (mobileIcon) mobileIcon.className = "fa-solid fa-sun";
+            } else {
+                if (desktopIcon) desktopIcon.className = "fa-solid fa-moon text-lg";
+                if (mobileIcon) mobileIcon.className = "fa-solid fa-moon";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            updateDarkModeButtons(isDark);
+        });
 
         // WhatsApp Paylaşım
         function shareOnWhatsApp() {
