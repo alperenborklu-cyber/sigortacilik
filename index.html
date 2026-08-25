@@ -8,11 +8,10 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Check local storage or system preferences immediately to prevent flash
+        // Check local storage immediately to prevent flash, default is light mode
         (function() {
             const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            if (savedTheme === 'dark') {
                 document.documentElement.classList.add('dark');
             } else {
                 document.documentElement.classList.remove('dark');
@@ -113,7 +112,7 @@
     </div>
 
     <!-- Header / Navigasyon -->
-    <header class="sticky top-0 z-50 bg-white dark:bg-slate-950 border-b border-gray-50 dark:border-slate-900 transition-all duration-300">
+    <header class="sticky top-0 z-50 bg-white border-b border-gray-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
                 <!-- Logo -->
@@ -125,15 +124,15 @@
                 
                 <!-- Masaüstü Navigasyon -->
                 <nav class="hidden md:flex space-x-10 items-center">
-                    <a href="#hizmetler" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors">Hizmetlerimiz</a>
-                    <a href="#hakkimizda" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors">Hakkımızda</a>
-                    <a href="blog/" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors">Blog</a>
-                    <a href="#teklif" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors">Teklif Al</a>
-                    <a href="#iletisim" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors">İletişim</a>
-                    <button onclick="toggleDarkMode()" class="text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors focus:outline-none p-2" aria-label="Karanlık Mod">
+                    <a href="#hizmetler" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hizmetlerimiz</a>
+                    <a href="#hakkimizda" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hakkımızda</a>
+                    <a href="blog/" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Blog</a>
+                    <a href="#teklif" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Teklif Al</a>
+                    <a href="#iletisim" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">İletişim</a>
+                    <button onclick="toggleDarkMode()" class="text-gray-500 hover:text-brand transition-colors focus:outline-none p-2" aria-label="Karanlık Mod">
                         <i id="dark-mode-icon-desktop" class="fa-solid fa-moon text-lg"></i>
                     </button>
-                    <a href="#teklif" class="inline-flex items-center justify-center px-6 py-3 border border-gray-200 dark:border-slate-800 text-xs font-bold uppercase tracking-widest rounded-full text-gray-700 dark:text-gray-300 hover:border-brand hover:bg-brand hover:text-white dark:hover:border-brand dark:hover:bg-brand transition-all duration-500">
+                    <a href="#teklif" class="inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-xs font-bold uppercase tracking-widest rounded-full text-gray-700 hover:border-brand hover:bg-brand hover:text-white transition-all duration-500">
                         Hızlı Teklif
                     </a>
                 </nav>
@@ -149,14 +148,14 @@
         </div>
 
         <!-- Mobil Menü -->
-        <div class="hidden md:hidden bg-white dark:bg-slate-950 border-b border-gray-100 dark:border-slate-900" id="mobile-menu">
+        <div class="hidden md:hidden bg-white border-b border-gray-100" id="mobile-menu">
             <div class="px-6 pt-4 pb-6 space-y-2 text-center">
-                <a href="#hizmetler" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand">Hizmetlerimiz</a>
-                <a href="#hakkimizda" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand">Hakkımızda</a>
-                <a href="blog/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand">Blog</a>
-                <a href="#teklif" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand">Teklif Al</a>
-                <a href="#iletisim" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand">İletişim</a>
-                <button onclick="toggleDarkMode(); toggleMobileMenu();" class="w-full py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand flex items-center justify-center gap-2 border-t border-gray-100 dark:border-slate-900 pt-4">
+                <a href="#hizmetler" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Hizmetlerimiz</a>
+                <a href="#hakkimizda" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Hakkımızda</a>
+                <a href="blog/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Blog</a>
+                <a href="#teklif" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Teklif Al</a>
+                <a href="#iletisim" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">İletişim</a>
+                <button onclick="toggleDarkMode(); toggleMobileMenu();" class="w-full py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand flex items-center justify-center gap-2 border-t border-gray-100 pt-4">
                     <i id="dark-mode-icon-mobile" class="fa-solid fa-moon"></i> Gece Modu
                 </button>
                 <a href="#teklif" onclick="toggleMobileMenu()" class="mt-4 block w-full py-3.5 text-center text-xs font-semibold uppercase tracking-widest text-white bg-brand hover:bg-brand-dark rounded-full transition-all duration-300">
