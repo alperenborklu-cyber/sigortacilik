@@ -96,15 +96,15 @@
                 
                 <!-- Masaüstü Navigasyon -->
                 <nav class="hidden md:flex space-x-10 items-center">
-                    <a href="../#hizmetler" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hizmetlerimiz</a>
+                    <a href="../?scroll=hizmetler" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hizmetlerimiz</a>
                     <a href="./" class="text-xs font-bold uppercase tracking-wider text-brand transition-colors">Hakkımızda</a>
                     <a href="../blog/" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Blog</a>
-                    <a href="../#teklif" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Teklif Al</a>
-                    <a href="../#iletisim" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">İletişim</a>
+                    <a href="../?scroll=teklif" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Teklif Al</a>
+                    <a href="../?scroll=iletisim" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">İletişim</a>
                     <button onclick="toggleDarkMode()" class="text-gray-500 hover:text-brand transition-colors focus:outline-none p-2" aria-label="Karanlık Mod">
                         <i id="dark-mode-icon-desktop" class="fa-solid fa-moon text-lg"></i>
                     </button>
-                    <a href="../#teklif" class="inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-xs font-bold uppercase tracking-widest rounded-full text-gray-700 hover:border-brand hover:bg-brand hover:text-white transition-all duration-500">
+                    <a href="../?scroll=teklif" class="inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-xs font-bold uppercase tracking-widest rounded-full text-gray-700 hover:border-brand hover:bg-brand hover:text-white transition-all duration-500">
                         Hızlı Teklif
                     </a>
                 </nav>
@@ -122,15 +122,15 @@
         <!-- Mobil Menü -->
         <div class="hidden md:hidden bg-white border-b border-gray-100" id="mobile-menu">
             <div class="px-6 pt-4 pb-6 space-y-2 text-center">
-                <a href="../#hizmetler" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Hizmetlerimiz</a>
+                <a href="../?scroll=hizmetler" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Hizmetlerimiz</a>
                 <a href="./" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-brand font-bold">Hakkımızda</a>
                 <a href="../blog/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Blog</a>
-                <a href="../#teklif" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Teklif Al</a>
-                <a href="../#iletisim" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">İletişim</a>
+                <a href="../?scroll=teklif" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Teklif Al</a>
+                <a href="../?scroll=iletisim" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">İletişim</a>
                 <button onclick="toggleDarkMode(); toggleMobileMenu();" class="w-full py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand flex items-center justify-center gap-2 border-t border-gray-100 pt-4">
                     <i id="dark-mode-icon-mobile" class="fa-solid fa-moon"></i> Gece Modu
                 </button>
-                <a href="../#teklif" onclick="toggleMobileMenu()" class="mt-4 block w-full py-3.5 text-center text-xs font-semibold uppercase tracking-widest text-white bg-brand hover:bg-brand-dark rounded-full transition-all duration-300">
+                <a href="../?scroll=teklif" onclick="toggleMobileMenu()" class="mt-4 block w-full py-3.5 text-center text-xs font-semibold uppercase tracking-widest text-white bg-brand hover:bg-brand-dark rounded-full transition-all duration-300">
                     Hızlı Teklif
                 </a>
             </div>
@@ -189,7 +189,7 @@
 
                     <!-- Hızlı İletişim Butonu -->
                     <div class="pt-4">
-                        <a href="../#teklif" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-xs font-bold uppercase tracking-widest rounded-full text-white bg-gray-900 hover:bg-brand transition-all duration-500 shadow-lg">
+                        <a href="../?scroll=teklif" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-xs font-bold uppercase tracking-widest rounded-full text-white bg-gray-900 hover:bg-brand transition-all duration-500 shadow-lg">
                             Bizimle İletişime Geçin
                         </a>
                     </div>
@@ -301,10 +301,10 @@
                 <div class="md:col-span-3 space-y-6">
                     <h4 class="text-white text-sm font-bold uppercase tracking-widest">Hızlı Erişim</h4>
                     <ul class="space-y-3 text-sm font-light">
-                        <li><a href="../#hizmetler" class="hover:text-white transition-colors">Hizmetlerimiz</a></li>
-                        <li><a href="../#hakkimizda" class="hover:text-white transition-colors">Hakkımızda</a></li>
+                        <li><a href="../?scroll=hizmetler" class="hover:text-white transition-colors">Hizmetlerimiz</a></li>
+                        <li><a href="./" class="hover:text-white transition-colors">Hakkımızda</a></li>
                         <li><a href="../blog/" class="hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="../#teklif" class="hover:text-white transition-colors">Teklif Al</a></li>
+                        <li><a href="../?scroll=teklif" class="hover:text-white transition-colors">Teklif Al</a></li>
                     </ul>
                 </div>
 

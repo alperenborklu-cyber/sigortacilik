@@ -885,6 +885,14 @@
                                 
                                 setTimeout(() => {
                                     preloader.remove();
+                                    // Check URL query parameters for scrolling without hashtags
+                                    const urlParams = new URLSearchParams(window.location.search);
+                                    const scrollTarget = urlParams.get('scroll');
+                                    if (scrollTarget) {
+                                        scrollToSection(scrollTarget);
+                                        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                                        window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+                                    }
                                 }, 1000);
                             }
                         }, 200);
