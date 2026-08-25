@@ -169,9 +169,9 @@
     <section class="relative overflow-hidden flex items-center min-h-screen">
         <!-- Arka Plan Görselleri (Sırayla Değişen Güven Verici Görseller) -->
         <div class="absolute inset-0 -z-20 overflow-hidden">
-            <img id="hero-bg-0" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" src="trust_hero_bg_clean.jpg" alt="Blue Sky Sigorta Güvenli Gelecek">
-            <img id="hero-bg-1" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_3.jpg" alt="Huzurlu Yuva">
-            <img id="hero-bg-2" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="trust_hero_4.jpg" alt="Aile Güvencesi">
+            <img id="hero-bg-0" class="absolute inset-0 w-full h-full object-cover object-[70%_center] md:object-center transition-opacity duration-1000 opacity-100" src="trust_hero_bg_clean.jpg" alt="Blue Sky Sigorta Güvenli Gelecek">
+            <img id="hero-bg-1" class="absolute inset-0 w-full h-full object-cover object-[70%_center] md:object-center transition-opacity duration-1000 opacity-0" src="trust_hero_3.jpg" alt="Huzurlu Yuva">
+            <img id="hero-bg-2" class="absolute inset-0 w-full h-full object-cover object-[70%_center] md:object-center transition-opacity duration-1000 opacity-0" src="trust_hero_4.jpg" alt="Aile Güvencesi">
         </div>
         <!-- Karartma ve Renk Geçiş Overlay (Yazıların okunması için solda daha yoğun karartma) -->
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/60 to-transparent -z-10"></div>
@@ -217,9 +217,10 @@
             </div>
 
             <!-- Yatay kaydırılabilir mobil düzeni, masaüstünde 4'lü grid -->
-            <div class="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-x-visible md:pb-0 md:snap-none">
+            <!-- Masaüstünde 4'lü, mobilde alt alta listelenen grid düzeni -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Kart 1: Araç -->
-                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
+                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full">
                     <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
                         <i class="fa-solid fa-car text-lg"></i>
                     </div>
@@ -233,7 +234,7 @@
                 </div>
 
                 <!-- Kart 2: Sağlık -->
-                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
+                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full">
                     <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
                         <i class="fa-solid fa-heart-pulse text-lg"></i>
                     </div>
@@ -247,7 +248,7 @@
                 </div>
 
                 <!-- Kart 3: Konut -->
-                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
+                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full">
                     <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
                         <i class="fa-solid fa-house-chimney text-lg"></i>
                     </div>
@@ -261,7 +262,7 @@
                 </div>
 
                 <!-- Kart 4: Seyahat -->
-                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
+                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full">
                     <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
                         <i class="fa-solid fa-plane-departure text-lg"></i>
                     </div>
