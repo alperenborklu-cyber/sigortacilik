@@ -131,7 +131,7 @@
     </div>
 
     <!-- Header / Navigasyon -->
-    <header class="sticky top-0 z-50 bg-white/50 dark:bg-slate-950/50 backdrop-blur-md border-b border-gray-100/50 dark:border-slate-900/50 shadow-md shadow-slate-900/5 transition-all duration-300">
+    <header class="sticky top-0 z-50 bg-gray-950/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-gray-900/50 dark:border-slate-900/50 shadow-md shadow-slate-900/5 transition-all duration-300">
                 <!-- Top Slogan & Contact Bar -->
         <div class="bg-gray-950 text-white text-xs md:text-sm py-2 px-6 lg:px-8 border-b border-gray-900">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
@@ -166,38 +166,38 @@
                 
                 <!-- Masaüstü Navigasyon -->
                 <nav class="hidden md:flex space-x-10 items-center">
-                    <a onclick="scrollToSection('hizmetler')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-gray-800 hover:text-brand transition-colors">Hizmetlerimiz</a>
-                    <a href="hakkimizda/" class="text-[15px] font-bold uppercase tracking-wider text-gray-800 hover:text-brand transition-colors">Hakkımızda</a>
-                    <a href="blog/" class="text-[15px] font-bold uppercase tracking-wider text-gray-800 hover:text-brand transition-colors">Blog</a>
-                    <a onclick="scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-gray-800 hover:text-brand transition-colors">Teklif Al</a>
-                    <a onclick="scrollToSection('iletisim')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-gray-800 hover:text-brand transition-colors">İletişim</a>
-                    <button onclick="toggleDarkMode()" class="text-gray-500 hover:text-brand transition-colors focus:outline-none p-2" aria-label="Karanlık Mod">
+                    <a onclick="scrollToSection('hizmetler')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-gray-200 hover:text-brand transition-colors">Hizmetlerimiz</a>
+                    <a href="hakkimizda/" class="text-[15px] font-bold uppercase tracking-wider text-gray-200 hover:text-brand transition-colors">Hakkımızda</a>
+                    <a href="blog/" class="text-[15px] font-bold uppercase tracking-wider text-gray-200 hover:text-brand transition-colors">Blog</a>
+                    <a onclick="scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-gray-200 hover:text-brand transition-colors">Teklif Al</a>
+                    <a onclick="scrollToSection('iletisim')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-gray-200 hover:text-brand transition-colors">İletişim</a>
+                    <button onclick="toggleDarkMode()" class="text-gray-400 hover:text-brand transition-colors focus:outline-none p-2" aria-label="Karanlık Mod">
                         <i id="dark-mode-icon-desktop" class="fa-solid fa-moon text-lg"></i>
                     </button>
-                    <a onclick="scrollToSection('teklif')" class="cursor-pointer inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-sm font-bold uppercase tracking-widest rounded-full text-gray-800 hover:border-brand hover:bg-brand hover:text-white hover:scale-105 hover:shadow-lg hover:shadow-brand/10 transition-all duration-300">
+                    <a onclick="scrollToSection('teklif')" class="cursor-pointer inline-flex items-center justify-center px-8 py-4 border border-gray-800 text-sm font-bold uppercase tracking-widest rounded-full text-gray-200 hover:border-brand hover:bg-brand hover:text-white hover:scale-105 hover:shadow-lg hover:shadow-brand/10 transition-all duration-300">
                         Hızlı Teklif
                     </a>
                 </nav>
-
+ 
                 <!-- Mobil Menü Butonu -->
                 <div class="flex items-center md:hidden">
-                    <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-600 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-200 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Menüyü aç</span>
                         <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-
+ 
         <!-- Mobil Menü -->
-        <div class="hidden md:hidden bg-white border-b border-gray-100" id="mobile-menu">
+        <div class="hidden md:hidden bg-gray-950/95 border-b border-gray-900 backdrop-blur-md" id="mobile-menu">
             <div class="px-6 pt-4 pb-6 space-y-2 text-center">
-                <a onclick="scrollToSection('hizmetler'); toggleMobileMenu();" class="cursor-pointer block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Hizmetlerimiz</a>
-                <a href="hakkimizda/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Hakkımızda</a>
-                <a href="blog/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Blog</a>
-                <a onclick="scrollToSection('teklif'); toggleMobileMenu();" class="cursor-pointer block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Teklif Al</a>
-                <a onclick="scrollToSection('iletisim'); toggleMobileMenu();" class="cursor-pointer block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">İletişim</a>
-                <button onclick="toggleDarkMode(); toggleMobileMenu();" class="w-full py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand flex items-center justify-center gap-2 border-t border-gray-100 pt-4">
+                <a onclick="scrollToSection('hizmetler'); toggleMobileMenu();" class="cursor-pointer block py-2 text-sm font-semibold uppercase tracking-wider text-gray-300 hover:text-brand">Hizmetlerimiz</a>
+                <a href="hakkimizda/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-300 hover:text-brand">Hakkımızda</a>
+                <a href="blog/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-300 hover:text-brand">Blog</a>
+                <a onclick="scrollToSection('teklif'); toggleMobileMenu();" class="cursor-pointer block py-2 text-sm font-semibold uppercase tracking-wider text-gray-300 hover:text-brand">Teklif Al</a>
+                <a onclick="scrollToSection('iletisim'); toggleMobileMenu();" class="cursor-pointer block py-2 text-sm font-semibold uppercase tracking-wider text-gray-300 hover:text-brand">İletişim</a>
+                <button onclick="toggleDarkMode(); toggleMobileMenu();" class="w-full py-2 text-sm font-semibold uppercase tracking-wider text-gray-300 hover:text-brand flex items-center justify-center gap-2 border-t border-gray-900 pt-4">
                     <i id="dark-mode-icon-mobile" class="fa-solid fa-moon"></i> Gece Modu
                 </button>
                 <a onclick="scrollToSection('teklif'); toggleMobileMenu();" class="cursor-pointer mt-4 block w-full py-3.5 text-center text-xs font-semibold uppercase tracking-widest text-white bg-brand hover:bg-brand-dark rounded-full transition-all duration-300">
