@@ -69,7 +69,7 @@
             width: max-content;
             animation: logo-ticker 25s linear infinite;
         }
-        .animate-logo-ticker:hover {
+        .logo-ticker-container:hover .animate-logo-ticker {
             animation-play-state: paused;
         }
     </style>
@@ -372,7 +372,7 @@
             </div>
 
         <!-- Sonsuz Logo Bandı -->
-        <div class="relative w-full overflow-hidden flex items-center bg-transparent py-4 gap-20">
+        <div class="relative w-full overflow-hidden flex items-center bg-transparent py-4 gap-20 logo-ticker-container">
             <!-- Yanlardaki gölge/geçiş efekti -->
             <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
             <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
