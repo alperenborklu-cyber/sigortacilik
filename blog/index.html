@@ -91,26 +91,30 @@
 
     <!-- Header / Navigasyon -->
     <header class="sticky top-0 z-50 bg-white border-b border-gray-50 transition-all duration-300">
+        <!-- Top Slogan Bar -->
+        <div class="bg-gray-950 text-white text-xs md:text-sm font-semibold py-2.5 text-center tracking-widest uppercase">
+            <i class="fa-solid fa-shield-halved text-brand mr-2"></i>geleceğinizi güvence altına alın.
+        </div>
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
+            <div class="flex justify-between items-center h-[125px]">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="../" class="flex items-center">
-                        <img class="h-16 w-auto object-contain" src="../blue_sky_logo.webp" alt="Blue Sky Sigorta Logo">
+                        <img class="h-[83px] w-auto object-contain" src="../blue_sky_logo.webp" alt="Blue Sky Sigorta Logo">
                     </a>
                 </div>
                 
                 <!-- Masaüstü Navigasyon -->
                 <nav class="hidden md:flex space-x-10 items-center">
-                    <a href="../?scroll=hizmetler" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hizmetlerimiz</a>
-                    <a href="../hakkimizda/" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hakkımızda</a>
-                    <a href="./" class="text-xs font-bold uppercase tracking-wider text-brand transition-colors">Blog</a>
-                    <a href="../?scroll=teklif" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Teklif Al</a>
-                    <a href="../?scroll=iletisim" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">İletişim</a>
+                    <a href="../?scroll=hizmetler" class="text-[15px] font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hizmetlerimiz</a>
+                    <a href="../hakkimizda/" class="text-[15px] font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hakkımızda</a>
+                    <a href="./" class="text-[15px] font-bold uppercase tracking-wider text-brand transition-colors">Blog</a>
+                    <a href="../?scroll=teklif" class="text-[15px] font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Teklif Al</a>
+                    <a href="../?scroll=iletisim" class="text-[15px] font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">İletişim</a>
                     <button onclick="toggleDarkMode()" class="text-gray-500 hover:text-brand transition-colors focus:outline-none p-2" aria-label="Karanlık Mod">
                         <i id="dark-mode-icon-desktop" class="fa-solid fa-moon text-lg"></i>
                     </button>
-                    <a href="../?scroll=teklif" class="inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-xs font-bold uppercase tracking-widest rounded-full text-gray-700 hover:border-brand hover:bg-brand hover:text-white transition-all duration-500">
+                    <a href="../?scroll=teklif" class="inline-flex items-center justify-center px-8 py-4 border border-gray-200 text-sm font-bold uppercase tracking-widest rounded-full text-gray-700 hover:border-brand hover:bg-brand hover:text-white transition-all duration-500">
                         Hızlı Teklif
                     </a>
                 </nav>
@@ -605,7 +609,7 @@
                         </div>
                         <div class="flex items-center justify-between pt-4 border-t border-gray-50 mt-auto">
                             <span class="text-[10px] text-gray-400 font-light">${post.date}</span>
-                            <a href="${slug}/" class="text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                            <a href="${slug}/" class="text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
                                 Oku <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                             </a>
                         </div>

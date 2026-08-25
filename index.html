@@ -132,26 +132,30 @@
 
     <!-- Header / Navigasyon -->
     <header class="sticky top-0 z-50 bg-white border-b border-gray-50 transition-all duration-300">
+        <!-- Top Slogan Bar -->
+        <div class="bg-gray-950 text-white text-xs md:text-sm font-semibold py-2.5 text-center tracking-widest uppercase">
+            <i class="fa-solid fa-shield-halved text-brand mr-2"></i>geleceğinizi güvence altına alın.
+        </div>
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
+            <div class="flex justify-between items-center h-[125px]">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="cursor-pointer flex items-center">
-                        <img class="h-16 w-auto object-contain" src="blue_sky_logo.webp" alt="Blue Sky Sigorta Logo">
+                        <img class="h-[83px] w-auto object-contain" src="blue_sky_logo.webp" alt="Blue Sky Sigorta Logo">
                     </a>
                 </div>
                 
                 <!-- Masaüstü Navigasyon -->
                 <nav class="hidden md:flex space-x-10 items-center">
-                    <a onclick="scrollToSection('hizmetler')" class="cursor-pointer text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hizmetlerimiz</a>
-                    <a href="hakkimizda/" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hakkımızda</a>
-                    <a href="blog/" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Blog</a>
-                    <a onclick="scrollToSection('teklif')" class="cursor-pointer text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Teklif Al</a>
-                    <a onclick="scrollToSection('iletisim')" class="cursor-pointer text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">İletişim</a>
+                    <a onclick="scrollToSection('hizmetler')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hizmetlerimiz</a>
+                    <a href="hakkimizda/" class="text-[15px] font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hakkımızda</a>
+                    <a href="blog/" class="text-[15px] font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Blog</a>
+                    <a onclick="scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Teklif Al</a>
+                    <a onclick="scrollToSection('iletisim')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">İletişim</a>
                     <button onclick="toggleDarkMode()" class="text-gray-500 hover:text-brand transition-colors focus:outline-none p-2" aria-label="Karanlık Mod">
                         <i id="dark-mode-icon-desktop" class="fa-solid fa-moon text-lg"></i>
                     </button>
-                    <a onclick="scrollToSection('teklif')" class="cursor-pointer inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-xs font-bold uppercase tracking-widest rounded-full text-gray-700 hover:border-brand hover:bg-brand hover:text-white transition-all duration-500">
+                    <a onclick="scrollToSection('teklif')" class="cursor-pointer inline-flex items-center justify-center px-8 py-4 border border-gray-200 text-sm font-bold uppercase tracking-widest rounded-full text-gray-700 hover:border-brand hover:bg-brand hover:text-white transition-all duration-500">
                         Hızlı Teklif
                     </a>
                 </nav>
@@ -248,7 +252,7 @@
                     <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
                         Kasko ve trafik güvenceleriyle yoldaki her anınızı endişeden uzak, asil bir keyfe dönüştürün.
                     </p>
-                    <a onclick="selectInsuranceType('Araç Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                    <a onclick="selectInsuranceType('Araç Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
                         Teklif İste <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
@@ -262,7 +266,7 @@
                     <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
                         Özel ayrıcalıklarla donatılmış sağlık poliçeleriyle en seçkin hastanelerde kusursuz bakım alın.
                     </p>
-                    <a onclick="selectInsuranceType('Sağlık Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                    <a onclick="selectInsuranceType('Sağlık Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
                         Teklif İste <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
@@ -276,7 +280,7 @@
                     <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
                         En değerli sığınağınız olan evinizi ve içindeki anılarınızı en geniş limitlerle güvenceye alın.
                     </p>
-                    <a onclick="selectInsuranceType('Konut & Deprem Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                    <a onclick="selectInsuranceType('Konut & Deprem Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
                         Teklif İste <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
@@ -290,7 +294,7 @@
                     <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
                         Dünyayı özgürce ve asaletle keşfederken tüm risklerinize karşı uluslararası korumaya sahip olun.
                     </p>
-                    <a onclick="selectInsuranceType('Seyahat Sağlık Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                    <a onclick="selectInsuranceType('Seyahat Sağlık Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
                         Teklif İste <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
