@@ -745,6 +745,212 @@
         </div>
     </section>
 
+    <!-- Hızlı Çözümler Banner / Slider -->
+    <section class="relative overflow-hidden py-24 bg-gray-950 text-white dark:bg-slate-950 border-t border-gray-900">
+        <!-- Başlık Bölümü -->
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 mb-16 text-center">
+            <span class="text-xs font-bold tracking-widest text-brand uppercase">Maksimum Güvence</span>
+            <h2 class="text-3xl font-bold mt-2">Sigorta Çözümlerimiz</h2>
+            <div class="w-12 h-0.5 bg-brand mx-auto my-4"></div>
+            <p class="text-gray-400 font-light text-sm max-w-xl mx-auto">
+                Dijital ve Hızlı Hizmet | Uzman Kadro Kolay İşlem | 7/24 Kesintisiz Destek
+            </p>
+            <p class="text-gray-300 font-semibold text-xs tracking-wider uppercase mt-3">
+                Sizin için en doğru sigorta çözümlerini sunmak için buradayız!
+            </p>
+        </div>
+
+        <!-- Slider Alanı -->
+        <div class="relative h-[400px] max-w-7xl mx-auto px-6 lg:px-8 overflow-hidden rounded-3xl">
+            <!-- Slaytlar -->
+            <div id="footer-slider-container" class="relative w-full h-full">
+                <!-- Slide 1: Trafik Sigortası -->
+                <div class="footer-slide absolute inset-0 transition-opacity duration-1000 opacity-100">
+                    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80" alt="Trafik Sigortası">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"></div>
+                    <div class="absolute inset-y-0 left-0 pl-12 flex flex-col justify-center max-w-lg space-y-4">
+                        <span class="text-xs font-bold text-brand uppercase tracking-widest">Trafik Sigortası</span>
+                        <h3 class="text-2xl font-bold">Zorunlu Trafik Sigortası</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            Zorunlu trafik sigortası ile siz ve diğer yolcular güvende. Trafikte karşılaşabileceğiniz riskleri asgariye indirin.
+                        </p>
+                        <a onclick="selectInsuranceType('Trafik Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold text-brand uppercase tracking-widest hover:text-white inline-flex items-center gap-1">
+                            Teklif Al <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Kasko Sigortası -->
+                <div class="footer-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Kasko Sigortası">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"></div>
+                    <div class="absolute inset-y-0 left-0 pl-12 flex flex-col justify-center max-w-lg space-y-4">
+                        <span class="text-xs font-bold text-brand uppercase tracking-widest">Kasko Sigortası</span>
+                        <h3 class="text-2xl font-bold">Kasko Sigortası</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            Aracınızı kaza, çarpma, hırsızlık ve birçok riske karşı güvence altına alın, yolda huzurla ilerleyin.
+                        </p>
+                        <a onclick="selectInsuranceType('Kasko Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold text-brand uppercase tracking-widest hover:text-white inline-flex items-center gap-1">
+                            Teklif Al <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Konut Sigortası -->
+                <div class="footer-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Konut Sigortası">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"></div>
+                    <div class="absolute inset-y-0 left-0 pl-12 flex flex-col justify-center max-w-lg space-y-4">
+                        <span class="text-xs font-bold text-brand uppercase tracking-widest">Konut Sigortası</span>
+                        <h3 class="text-2xl font-bold">Konut Sigortası</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            Eviniz ve sevdikleriniz, modern teknoloji ve Blue Sky korumasıyla her türlü riske karşı güvende. Evinizi ve eşyalarınızı deprem, yangın, hırsızlık gibi risklere karşı koruyun.
+                        </p>
+                        <a onclick="selectInsuranceType('Konut Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold text-brand uppercase tracking-widest hover:text-white inline-flex items-center gap-1">
+                            Teklif Al <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Sağlık Sigortası -->
+                <div class="footer-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80" alt="Sağlık Sigortası">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"></div>
+                    <div class="absolute inset-y-0 left-0 pl-12 flex flex-col justify-center max-w-lg space-y-4">
+                        <span class="text-xs font-bold text-brand uppercase tracking-widest">Sağlık Sigortası</span>
+                        <h3 class="text-2xl font-bold">Sağlık Sigortası</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            Sağlığınız için en iyi hizmete kolay ve hızlı ulaşın. Sevdikleriniz için her an kesintisiz sağlık çözümleri.
+                        </p>
+                        <a onclick="selectInsuranceType('Sağlık Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold text-brand uppercase tracking-widest hover:text-white inline-flex items-center gap-1">
+                            Teklif Al <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 5: Tamamlayıcı Sağlık Sigortası -->
+                <div class="footer-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80" alt="Tamamlayıcı Sağlık">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"></div>
+                    <div class="absolute inset-y-0 left-0 pl-12 flex flex-col justify-center max-w-lg space-y-4">
+                        <span class="text-xs font-bold text-brand uppercase tracking-widest">Sağlık Çözümleri</span>
+                        <h3 class="text-2xl font-bold">Tamamlayıcı Sağlık Sigortası</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            SGK'nızı tamamlar, özel hastane konforu ve SGK'ya ek en iyi sağlık hizmetlerini uygun fiyatlarla sunar.
+                        </p>
+                        <a onclick="selectInsuranceType('Sağlık Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold text-brand uppercase tracking-widest hover:text-white inline-flex items-center gap-1">
+                            Teklif Al <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 6: İşyeri Sigortası -->
+                <div class="footer-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="İşyeri Sigortası">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"></div>
+                    <div class="absolute inset-y-0 left-0 pl-12 flex flex-col justify-center max-w-lg space-y-4">
+                        <span class="text-xs font-bold text-brand uppercase tracking-widest">İşyeri Sigortası</span>
+                        <h3 class="text-2xl font-bold">İşyeri Sigortası</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            İş yerinizi yangın, su baskını, hırsızlık ve diğer risklere karşı güvence altına alın, emeğinizi koruyun.
+                        </p>
+                        <a onclick="selectInsuranceType('Diğer'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold text-brand uppercase tracking-widest hover:text-white inline-flex items-center gap-1">
+                            Teklif Al <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 7: Tarım Sigortaları -->
+                <div class="footer-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80" alt="Tarım Sigortaları">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"></div>
+                    <div class="absolute inset-y-0 left-0 pl-12 flex flex-col justify-center max-w-lg space-y-4">
+                        <span class="text-xs font-bold text-brand uppercase tracking-widest">Tarım Sigortaları</span>
+                        <h3 class="text-2xl font-bold">Tarım Sigortaları</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            Tarımsal emeklerinizi ve faaliyetlerinizi doğal afetlere ve iklim risklerine karşı bereketle koruyun.
+                        </p>
+                        <a onclick="selectInsuranceType('Diğer'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold text-brand uppercase tracking-widest hover:text-white inline-flex items-center gap-1">
+                            Teklif Al <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 8: Seyahat Sigortası -->
+                <div class="footer-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80" alt="Seyahat Sigortası">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"></div>
+                    <div class="absolute inset-y-0 left-0 pl-12 flex flex-col justify-center max-w-lg space-y-4">
+                        <span class="text-xs font-bold text-brand uppercase tracking-widest">Seyahat Sigortası</span>
+                        <h3 class="text-2xl font-bold">Seyahat Sigortası</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            Seyahatlerinizde beklenmeyen durumlara karşı güvence altında olun. Yurt dışı seyahatlerinizde tam koruma.
+                        </p>
+                        <a onclick="selectInsuranceType('Seyahat Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold text-brand uppercase tracking-widest hover:text-white inline-flex items-center gap-1">
+                            Teklif Al <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 9: Hayat Sigortası -->
+                <div class="footer-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80" alt="Hayat Sigortası">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"></div>
+                    <div class="absolute inset-y-0 left-0 pl-12 flex flex-col justify-center max-w-lg space-y-4">
+                        <span class="text-xs font-bold text-brand uppercase tracking-widest">Hayat Sigortası</span>
+                        <h3 class="text-2xl font-bold">Hayat Sigortası</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            Sevdiklerinizin geleceğini güvence altına alın, içiniz rahat olsun. Hayatın getireceği her an korunun.
+                        </p>
+                        <a onclick="selectInsuranceType('Diğer'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold text-brand uppercase tracking-widest hover:text-white inline-flex items-center gap-1">
+                            Teklif Al <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 10: Deprem Sigortası -->
+                <div class="footer-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="Deprem Sigortası">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"></div>
+                    <div class="absolute inset-y-0 left-0 pl-12 flex flex-col justify-center max-w-lg space-y-4">
+                        <span class="text-xs font-bold text-brand uppercase tracking-widest">Deprem Sigortası</span>
+                        <h3 class="text-2xl font-bold">DASK - Zorunlu Deprem Sigortası</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            Zorunlu deprem sigortası (DASK) ile depreme karşı maddi kayıplarınızı azaltın. Deprem riskine karşı en güçlü teminat.
+                        </p>
+                        <a onclick="selectInsuranceType('Deprem Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold text-brand uppercase tracking-widest hover:text-white inline-flex items-center gap-1">
+                            Teklif Al <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 11: Full Kasko ve Trafik -->
+                <div class="footer-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80" alt="Full Kasko ve Trafik">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"></div>
+                    <div class="absolute inset-y-0 left-0 pl-12 flex flex-col justify-center max-w-lg space-y-4">
+                        <span class="text-xs font-bold text-brand uppercase tracking-widest">Araç Paketleri</span>
+                        <h3 class="text-2xl font-bold">Full Kasko ve Trafik</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            Hem kendinizi hem de aracınızı yoldaki tüm sürprizlere karşı kapsamlı teminatla koruyun.
+                        </p>
+                        <a onclick="selectInsuranceType('Kasko Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-xs font-bold text-brand uppercase tracking-widest hover:text-white inline-flex items-center gap-1">
+                            Teklif Al <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kontroller -->
+            <button onclick="changeFooterSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all duration-300">
+                <i class="fa-solid fa-chevron-left text-xs"></i>
+            </button>
+            <button onclick="changeFooterSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all duration-300">
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+            </button>
+        </div>
+    </section>
+
     <!-- Harita Bölümü -->
     <div class="w-full h-80 bg-gray-100 border-t border-gray-200">
         <iframe 
@@ -1092,6 +1298,41 @@
                 });
             }, { threshold: 0.2 });
             observer.observe(counterSection);
+        }
+
+        // Footer Carousel Logic
+        let currentFooterSlide = 0;
+        const footerSlides = document.querySelectorAll('.footer-slide');
+        const totalFooterSlides = footerSlides.length;
+
+        function showFooterSlide(index) {
+            if (totalFooterSlides === 0) return;
+            footerSlides[currentFooterSlide].classList.remove('opacity-100');
+            footerSlides[currentFooterSlide].classList.add('opacity-0');
+            
+            currentFooterSlide = (index + totalFooterSlides) % totalFooterSlides;
+            
+            footerSlides[currentFooterSlide].classList.remove('opacity-0');
+            footerSlides[currentFooterSlide].classList.add('opacity-100');
+        }
+
+        function changeFooterSlide(direction) {
+            showFooterSlide(currentFooterSlide + direction);
+        }
+
+        let footerSlideInterval = setInterval(() => {
+            changeFooterSlide(1);
+        }, 6000); // 6 seconds auto-rotate
+
+        // Pause auto-rotate on hover
+        const sliderContainer = document.getElementById('footer-slider-container');
+        if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => clearInterval(footerSlideInterval));
+            sliderContainer.addEventListener('mouseleave', () => {
+                footerSlideInterval = setInterval(() => {
+                    changeFooterSlide(1);
+                }, 6000);
+            });
         }
     </script>
 
