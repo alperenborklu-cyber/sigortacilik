@@ -259,61 +259,88 @@
                 <p class="text-gray-500 dark:text-gray-400 font-light text-sm max-w-lg mx-auto">Kişisel ve kurumsal yaşamınızı en yüksek standartlarda teminat altına alacak şık çözümler sunuyoruz.</p>
             </div>
 
-            <!-- Yatay kaydırılabilir mobil düzeni, masaüstünde 4'lü grid -->
-            <!-- Masaüstünde 4'lü, mobilde alt alta listelenen grid düzeni -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Kart 1: Araç -->
+            <!-- Masaüstünde 3'lü, mobilde alt alta listelenen grid düzeni -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Kart 1: Trafik Sigortası -->
                 <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full">
                     <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
-                        <i class="fa-solid fa-car text-lg"></i>
+                        <i class="fa-solid fa-shield-halved text-lg"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Araç Sigortası</h3>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Trafik Sigortası</h3>
                     <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
-                        Kasko ve trafik güvenceleriyle yoldaki her anınızı endişeden uzak, asil bir keyfe dönüştürün.
+                        Yasal zorunluluğun ötesinde, trafikteki olası risklere karşı kendinizi ve üçüncü şahısları güvenli yarınlara taşıyın.
                     </p>
-                    <a onclick="selectInsuranceType('Araç Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                    <a onclick="selectInsuranceType('Trafik Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
                         Teklif İste <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
 
-                <!-- Kart 2: Sağlık -->
+                <!-- Kart 2: Kasko Sigortası -->
+                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full">
+                    <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
+                        <i class="fa-solid fa-car text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Kasko Sigortası</h3>
+                    <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
+                        Aracınızı kaza, hırsızlık ve doğal afetlere karşı koruyarak yoldaki her anınızı endişeden uzak, keyifli kılın.
+                    </p>
+                    <a onclick="selectInsuranceType('Kasko Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                        Teklif İste <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Kart 3: Konut Sigortası -->
+                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full">
+                    <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
+                        <i class="fa-solid fa-house-chimney text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Konut Sigortası</h3>
+                    <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
+                        Yuvanızı yangın, hırsızlık ve tesisat hasarları gibi günlük risklere karşı en kapsamlı limitlerle koruma altına alın.
+                    </p>
+                    <a onclick="selectInsuranceType('Konut Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                        Teklif İste <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Kart 4: Sağlık Sigortası -->
                 <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full">
                     <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
                         <i class="fa-solid fa-heart-pulse text-lg"></i>
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Sağlık Sigortası</h3>
                     <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
-                        Özel ayrıcalıklarla donatılmış sağlık poliçeleriyle en seçkin hastanelerde kusursuz bakım alın.
+                        Özel ayrıcalıklarla donatılmış sağlık poliçeleriyle seçkin sağlık kurumlarında kendiniz için en üstün bakımı alın.
                     </p>
                     <a onclick="selectInsuranceType('Sağlık Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
                         Teklif İste <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
 
-                <!-- Kart 3: Konut -->
-                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full">
-                    <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
-                        <i class="fa-solid fa-house-chimney text-lg"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Konut & Deprem</h3>
-                    <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
-                        En değerli sığınağınız olan evinizi ve içindeki anılarınızı en geniş limitlerle güvenceye alın.
-                    </p>
-                    <a onclick="selectInsuranceType('Konut & Deprem Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
-                        Teklif İste <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-
-                <!-- Kart 4: Seyahat -->
+                <!-- Kart 5: Seyahat Sigortası -->
                 <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full">
                     <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
                         <i class="fa-solid fa-plane-departure text-lg"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Seyahat Sağlık</h3>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Seyahat Sigortası</h3>
                     <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
-                        Dünyayı özgürce ve asaletle keşfederken tüm risklerinize karşı uluslararası korumaya sahip olun.
+                        Dünyayı özgürce ve huzurla keşfederken, karşılaşabileceğiniz tüm sağlık ve bagaj risklerine karşı tam koruma sağlayın.
                     </p>
-                    <a onclick="selectInsuranceType('Seyahat Sağlık Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                    <a onclick="selectInsuranceType('Seyahat Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                        Teklif İste <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Kart 6: Konut & Deprem Sigortası -->
+                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full">
+                    <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
+                        <i class="fa-solid fa-house-shield text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Konut & Deprem Sigortası</h3>
+                    <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
+                        Zorunlu deprem koruması (DASK) ve ek teminatlarla, en değerli sığınağınızı sarsıntılara karşı tam güvenceye alın.
+                    </p>
+                    <a onclick="selectInsuranceType('Konut & Deprem Sigortası'); scrollToSection('teklif')" class="cursor-pointer text-[15px] font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
                         Teklif İste <i class="fa-solid fa-chevron-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
@@ -680,10 +707,12 @@
                             <label for="insurance_type" class="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">Sigorta Türü</label>
                             <select id="insurance_type" name="insurance_type" required class="w-full px-5 py-4 rounded-xl border border-gray-100 dark:border-slate-800 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition-all text-gray-600 dark:text-gray-300 font-light text-sm bg-neutral-soft dark:bg-slate-950">
                                 <option value="" disabled selected>Seçiniz...</option>
-                                <option value="Araç Sigortası">Araç Sigortası (Kasko / Trafik)</option>
+                                <option value="Trafik Sigortası">Trafik Sigortası</option>
+                                <option value="Kasko Sigortası">Kasko Sigortası</option>
+                                <option value="Konut Sigortası">Konut Sigortası</option>
                                 <option value="Sağlık Sigortası">Sağlık Sigortası</option>
+                                <option value="Seyahat Sigortası">Seyahat Sigortası</option>
                                 <option value="Konut & Deprem Sigortası">Konut & Deprem Sigortası</option>
-                                <option value="Seyahat Sağlık Sigortası">Seyahat Sağlık Sigortası</option>
                                 <option value="Diğer">Diğer / Özel Teklif</option>
                             </select>
                         </div>
