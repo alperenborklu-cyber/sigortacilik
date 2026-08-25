@@ -8,7 +8,20 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Check local storage or system preferences immediately to prevent flash
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+    <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -39,8 +52,6 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #374151;
         }
         /* Fade-in Animation */
         @keyframes fadeIn {
@@ -74,7 +85,7 @@
         }
     </style>
 </head>
-<body class="antialiased selection:bg-brand selection:text-white overflow-hidden">
+<body class="antialiased selection:bg-brand selection:text-white overflow-hidden bg-white text-gray-700 dark:bg-slate-950 dark:text-gray-300 transition-colors duration-300">
 
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress" class="fixed top-0 left-0 w-0 h-1 bg-brand z-[9999] transition-all duration-75"></div>
@@ -102,7 +113,7 @@
     </div>
 
     <!-- Header / Navigasyon -->
-    <header class="sticky top-0 z-50 bg-white border-b border-gray-50 transition-all duration-300">
+    <header class="sticky top-0 z-50 bg-white dark:bg-slate-950 border-b border-gray-50 dark:border-slate-900 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
                 <!-- Logo -->
@@ -114,12 +125,15 @@
                 
                 <!-- Masaüstü Navigasyon -->
                 <nav class="hidden md:flex space-x-10 items-center">
-                    <a href="#hizmetler" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hizmetlerimiz</a>
-                    <a href="#hakkimizda" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Hakkımızda</a>
-                    <a href="blog/" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Blog</a>
-                    <a href="#teklif" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">Teklif Al</a>
-                    <a href="#iletisim" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand transition-colors">İletişim</a>
-                    <a href="#teklif" class="inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-xs font-bold uppercase tracking-widest rounded-full text-gray-700 hover:border-brand hover:bg-brand hover:text-white transition-all duration-500">
+                    <a href="#hizmetler" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors">Hizmetlerimiz</a>
+                    <a href="#hakkimizda" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors">Hakkımızda</a>
+                    <a href="blog/" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors">Blog</a>
+                    <a href="#teklif" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors">Teklif Al</a>
+                    <a href="#iletisim" class="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors">İletişim</a>
+                    <button onclick="toggleDarkMode()" class="text-gray-500 hover:text-brand dark:text-gray-400 dark:hover:text-brand transition-colors focus:outline-none p-2" aria-label="Karanlık Mod">
+                        <i id="dark-mode-icon-desktop" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                    <a href="#teklif" class="inline-flex items-center justify-center px-6 py-3 border border-gray-200 dark:border-slate-800 text-xs font-bold uppercase tracking-widest rounded-full text-gray-700 dark:text-gray-300 hover:border-brand hover:bg-brand hover:text-white dark:hover:border-brand dark:hover:bg-brand transition-all duration-500">
                         Hızlı Teklif
                     </a>
                 </nav>
@@ -135,13 +149,16 @@
         </div>
 
         <!-- Mobil Menü -->
-        <div class="hidden md:hidden bg-white border-b border-gray-100" id="mobile-menu">
+        <div class="hidden md:hidden bg-white dark:bg-slate-950 border-b border-gray-100 dark:border-slate-900" id="mobile-menu">
             <div class="px-6 pt-4 pb-6 space-y-2 text-center">
-                <a href="#hizmetler" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Hizmetlerimiz</a>
-                <a href="#hakkimizda" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Hakkımızda</a>
-                <a href="blog/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Blog</a>
-                <a href="#teklif" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">Teklif Al</a>
-                <a href="#iletisim" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-brand">İletişim</a>
+                <a href="#hizmetler" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand">Hizmetlerimiz</a>
+                <a href="#hakkimizda" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand">Hakkımızda</a>
+                <a href="blog/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand">Blog</a>
+                <a href="#teklif" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand">Teklif Al</a>
+                <a href="#iletisim" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand">İletişim</a>
+                <button onclick="toggleDarkMode(); toggleMobileMenu();" class="w-full py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-brand flex items-center justify-center gap-2 border-t border-gray-100 dark:border-slate-900 pt-4">
+                    <i id="dark-mode-icon-mobile" class="fa-solid fa-moon"></i> Gece Modu
+                </button>
                 <a href="#teklif" onclick="toggleMobileMenu()" class="mt-4 block w-full py-3.5 text-center text-xs font-semibold uppercase tracking-widest text-white bg-brand hover:bg-brand-dark rounded-full transition-all duration-300">
                     Hızlı Teklif
                 </a>
@@ -191,24 +208,24 @@
     </section>
 
     <!-- Hizmetlerimiz Bölümü -->
-    <section id="hizmetler" class="pt-[264px] pb-36 bg-white border-t border-gray-50">
+    <section id="hizmetler" class="pt-[264px] pb-36 bg-white dark:bg-slate-950 border-t border-gray-50 dark:border-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-28 space-y-4">
                 <span class="text-xs font-bold tracking-widest text-brand uppercase">Seçkin Hizmetler</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Geniş Güvence Yelpazesi</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Geniş Güvence Yelpazesi</h2>
                 <div class="w-12 h-0.5 bg-brand mx-auto my-6"></div>
-                <p class="text-gray-500 font-light text-sm max-w-lg mx-auto">Kişisel ve kurumsal yaşamınızı en yüksek standartlarda teminat altına alacak şık çözümler sunuyoruz.</p>
+                <p class="text-gray-500 dark:text-gray-400 font-light text-sm max-w-lg mx-auto">Kişisel ve kurumsal yaşamınızı en yüksek standartlarda teminat altına alacak şık çözümler sunuyoruz.</p>
             </div>
 
             <!-- Yatay kaydırılabilir mobil düzeni, masaüstünde 4'lü grid -->
             <div class="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-x-visible md:pb-0 md:snap-none">
                 <!-- Kart 1: Araç -->
-                <div class="group bg-white hover:bg-neutral-soft border border-gray-100 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
-                    <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
+                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
+                    <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
                         <i class="fa-solid fa-car text-lg"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">Araç Sigortası</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-6 font-light">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Araç Sigortası</h3>
+                    <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
                         Kasko ve trafik güvenceleriyle yoldaki her anınızı endişeden uzak, asil bir keyfe dönüştürün.
                     </p>
                     <a href="#teklif" onclick="selectInsuranceType('Araç Sigortası')" class="text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
@@ -217,12 +234,12 @@
                 </div>
 
                 <!-- Kart 2: Sağlık -->
-                <div class="group bg-white hover:bg-neutral-soft border border-gray-100 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
-                    <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
+                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
+                    <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
                         <i class="fa-solid fa-heart-pulse text-lg"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">Sağlık Sigortası</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-6 font-light">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Sağlık Sigortası</h3>
+                    <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
                         Özel ayrıcalıklarla donatılmış sağlık poliçeleriyle en seçkin hastanelerde kusursuz bakım alın.
                     </p>
                     <a href="#teklif" onclick="selectInsuranceType('Sağlık Sigortası')" class="text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
@@ -231,12 +248,12 @@
                 </div>
 
                 <!-- Kart 3: Konut -->
-                <div class="group bg-white hover:bg-neutral-soft border border-gray-100 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
-                    <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
+                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
+                    <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
                         <i class="fa-solid fa-house-chimney text-lg"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">Konut & Deprem</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-6 font-light">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Konut & Deprem</h3>
+                    <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
                         En değerli sığınağınız olan evinizi ve içindeki anılarınızı en geniş limitlerle güvenceye alın.
                     </p>
                     <a href="#teklif" onclick="selectInsuranceType('Konut & Deprem Sigortası')" class="text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
@@ -245,12 +262,12 @@
                 </div>
 
                 <!-- Kart 4: Seyahat -->
-                <div class="group bg-white hover:bg-neutral-soft border border-gray-100 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
-                    <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
+                <div class="group bg-white dark:bg-slate-900 hover:bg-neutral-soft dark:hover:bg-slate-800/80 border border-gray-100 dark:border-slate-800 rounded-xl p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 snap-center shrink-0 w-[85vw] md:w-auto">
+                    <div class="w-12 h-12 rounded-full bg-brand-light dark:bg-brand/10 flex items-center justify-center text-brand mb-8 group-hover:bg-brand group-hover:text-white transition-all duration-500">
                         <i class="fa-solid fa-plane-departure text-lg"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">Seyahat Sağlık</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-6 font-light">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Seyahat Sağlık</h3>
+                    <p class="text-gray-400 dark:text-gray-400 text-xs leading-relaxed mb-6 font-light">
                         Dünyayı özgürce ve asaletle keşfederken tüm risklerinize karşı uluslararası korumaya sahip olun.
                     </p>
                     <a href="#teklif" onclick="selectInsuranceType('Seyahat Sağlık Sigortası')" class="text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
@@ -262,53 +279,53 @@
     </section>
 
     <!-- Hakkımızda Bölümü -->
-    <section id="hakkimizda" class="py-28 bg-neutral-soft">
+    <section id="hakkimizda" class="py-28 bg-neutral-soft dark:bg-slate-900/50 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div class="space-y-8">
                     <span class="text-xs font-bold tracking-widest text-brand uppercase">Kurumsal Duruşumuz</span>
-                    <p class="text-gray-500 font-light leading-relaxed">
+                    <p class="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
                         Blue Sky Sigorta, güveni sadece bir kelime değil, köklü bir prensip olarak benimser. Sektördeki konumumuzu şeffaf ve yalın çözümlere odaklanarak elde ettik. Sizi dinliyor, karmaşık yasal süreçleri arındırıyor ve en net teklifleri ayağınıza getiriyoruz.
                     </p>
                     <div class="grid grid-cols-2 gap-8 pt-4">
                         <div class="border-l-2 border-brand pl-6">
-                            <span class="block text-3xl font-bold text-gray-900">%100</span>
-                            <span class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Sadakat & Memnuniyet</span>
+                            <span class="block text-3xl font-bold text-gray-900 dark:text-white">%100</span>
+                            <span class="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider font-semibold">Sadakat & Memnuniyet</span>
                         </div>
                         <div class="border-l-2 border-brand pl-6">
-                            <span class="block text-3xl font-bold text-gray-900">7/24</span>
-                            <span class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Kişisel Danışmanlık</span>
+                            <span class="block text-3xl font-bold text-gray-900 dark:text-white">7/24</span>
+                            <span class="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider font-semibold">Kişisel Danışmanlık</span>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white border border-gray-100 rounded-2xl p-12 shadow-md space-y-8 relative overflow-hidden">
-                    <h4 class="text-lg font-bold text-gray-900">Öncelikli Değerlerimiz</h4>
+                <div class="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl p-12 shadow-md space-y-8 relative overflow-hidden transition-colors duration-300">
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white">Öncelikli Değerlerimiz</h4>
                     <ul class="space-y-6">
                         <li class="flex gap-4">
-                            <span class="w-6 h-6 rounded-full bg-brand-light text-brand flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span class="w-6 h-6 rounded-full bg-brand-light dark:bg-brand/10 text-brand flex items-center justify-center flex-shrink-0 mt-0.5">
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </span>
                             <div>
-                                <h5 class="font-semibold text-gray-900 text-sm">Zarif ve Sade Çözümler</h5>
-                                <p class="text-xs text-gray-400 font-light mt-1">Karmaşadan uzak, sadece size özel teminatlar sunan şeffaf poliçeler hazırlıyoruz.</p>
+                                <h5 class="font-semibold text-gray-900 dark:text-white text-sm">Zarif ve Sade Çözümler</h5>
+                                <p class="text-xs text-gray-400 dark:text-gray-400 font-light mt-1">Karmaşadan uzak, sadece size özel teminatlar sunan şeffaf poliçeler hazırlıyoruz.</p>
                             </div>
                         </li>
                         <li class="flex gap-4">
-                            <span class="w-6 h-6 rounded-full bg-brand-light text-brand flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span class="w-6 h-6 rounded-full bg-brand-light dark:bg-brand/10 text-brand flex items-center justify-center flex-shrink-0 mt-0.5">
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </span>
                             <div>
-                                <h5 class="font-semibold text-gray-900 text-sm">Seçkin Anlaşmalı Ağı</h5>
-                                <p class="text-xs text-gray-400 font-light mt-1">Türkiye'nin ve dünyanın en saygın kurumlarında ayrıcalıklı hizmet almanızı sağlıyoruz.</p>
+                                <h5 class="font-semibold text-gray-900 dark:text-white text-sm">Seçkin Anlaşmalı Ağı</h5>
+                                <p class="text-xs text-gray-400 dark:text-gray-400 font-light mt-1">Türkiye'nin ve dünyanın en saygın kurumlarında ayrıcalıklı hizmet almanızı sağlıyoruz.</p>
                             </div>
                         </li>
                         <li class="flex gap-4">
-                            <span class="w-6 h-6 rounded-full bg-brand-light text-brand flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span class="w-6 h-6 rounded-full bg-brand-light dark:bg-brand/10 text-brand flex items-center justify-center flex-shrink-0 mt-0.5">
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </span>
                             <div>
-                                <h5 class="font-semibold text-gray-900 text-sm">Hızlı Hasar Tazmini</h5>
-                                <p class="text-xs text-gray-400 font-light mt-1">Süreci yormadan, en sıkıntılı anınızda finansal yükünüzü derhal üstleniyoruz.</p>
+                                <h5 class="font-semibold text-gray-900 dark:text-white text-sm">Hızlı Hasar Tazmini</h5>
+                                <p class="text-xs text-gray-400 dark:text-gray-400 font-light mt-1">Süreci yormadan, en sıkıntılı anınızda finansal yükünüzü derhal üstleniyoruz.</p>
                             </div>
                         </li>
                     </ul>
@@ -318,7 +335,7 @@
     </section>
 
     <!-- İstatistik Sayacı Bölümü -->
-    <section class="py-16 bg-white border-b border-gray-50">
+    <section class="py-16 bg-white dark:bg-slate-950 border-b border-gray-50 dark:border-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center" id="counters-section">
                 <!-- Sayaç 1 -->
@@ -326,8 +343,8 @@
                     <div class="text-4xl sm:text-5xl font-extrabold text-brand tracking-tight">
                         <span class="counter" data-target="2">0</span>+
                     </div>
-                    <div class="text-xs uppercase font-bold tracking-wider text-gray-500">Deneyim Yılı</div>
-                    <p class="text-[10px] text-gray-400 font-light leading-relaxed">2 yıllık butik acente tecrübesi</p>
+                    <div class="text-xs uppercase font-bold tracking-wider text-gray-500 dark:text-gray-400">Deneyim Yılı</div>
+                    <p class="text-[10px] text-gray-400 dark:text-gray-500 font-light leading-relaxed">2 yıllık butik acente tecrübesi</p>
                 </div>
 
                 <!-- Sayaç 2 -->
@@ -335,8 +352,8 @@
                     <div class="text-4xl sm:text-5xl font-extrabold text-brand tracking-tight">
                         <span class="counter" data-target="30">0</span>+
                     </div>
-                    <div class="text-xs uppercase font-bold tracking-wider text-gray-500">Anlaşmalı Şirket</div>
-                    <p class="text-[10px] text-gray-400 font-light leading-relaxed">En seçkin sigorta şirketleri</p>
+                    <div class="text-xs uppercase font-bold tracking-wider text-gray-500 dark:text-gray-400">Anlaşmalı Şirket</div>
+                    <p class="text-[10px] text-gray-400 dark:text-gray-500 font-light leading-relaxed">En seçkin sigorta şirketleri</p>
                 </div>
 
                 <!-- Sayaç 3 -->
@@ -344,8 +361,8 @@
                     <div class="text-4xl sm:text-5xl font-extrabold text-brand tracking-tight">
                         <span class="counter" data-target="1000">0</span>+
                     </div>
-                    <div class="text-xs uppercase font-bold tracking-wider text-gray-500">Aktif Poliçe</div>
-                    <p class="text-[10px] text-gray-400 font-light leading-relaxed">Güvenle korunan yuva ve araç</p>
+                    <div class="text-xs uppercase font-bold tracking-wider text-gray-500 dark:text-gray-400">Aktif Poliçe</div>
+                    <p class="text-[10px] text-gray-400 dark:text-gray-500 font-light leading-relaxed">Güvenle korunan yuva ve araç</p>
                 </div>
 
                 <!-- Sayaç 4 -->
@@ -353,20 +370,20 @@
                     <div class="text-4xl sm:text-5xl font-extrabold text-brand tracking-tight">
                         24/7
                     </div>
-                    <div class="text-xs uppercase font-bold tracking-wider text-gray-500">Hasar Desteği</div>
-                    <p class="text-[10px] text-gray-400 font-light leading-relaxed">Her anınızda yanınızdayız</p>
+                    <div class="text-xs uppercase font-bold tracking-wider text-gray-500 dark:text-gray-400">Hasar Desteği</div>
+                    <p class="text-[10px] text-gray-400 dark:text-gray-500 font-light leading-relaxed">Her anınızda yanınızdayız</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Referanslar / İş Ortakları Bölümü -->
-    <section class="py-20 bg-gray-50 border-t border-b border-gray-100 overflow-hidden">
+    <section class="py-20 bg-gray-50 dark:bg-slate-900/50 border-t border-b border-gray-100 dark:border-slate-900 overflow-hidden transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16 space-y-4">
                 <span class="text-xs font-bold tracking-widest text-brand uppercase">Güçlü İş Birlikleri</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">32 Şirketle Çalışıyoruz</h2>
-                <p class="text-gray-500 font-light text-sm max-w-lg mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">32 Şirketle Çalışıyoruz</h2>
+                <p class="text-gray-500 dark:text-gray-400 font-light text-sm max-w-lg mx-auto">
                     Anlaşmalı olduğumuz 32 seçkin sigorta şirketi arasından size en uygun ve kapsamlı teklifleri hazırlıyoruz.
                 </p>
             </div>
@@ -374,8 +391,8 @@
         <!-- Sonsuz Logo Bandı -->
         <div class="relative w-full overflow-hidden flex items-center bg-transparent py-4 gap-20 logo-ticker-container">
             <!-- Yanlardaki gölge/geçiş efekti -->
-            <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
-            <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-gray-50 dark:from-slate-900 to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-gray-50 dark:from-slate-900 to-transparent z-10 pointer-events-none"></div>
 
             <!-- 1. Grup -->
             <div class="animate-logo-ticker flex gap-20 items-center shrink-0">
@@ -424,17 +441,17 @@
     </section>
 
     <!-- Müşteri Yorumları Bölümü -->
-    <section class="py-28 bg-neutral-soft border-b border-gray-100">
+    <section class="py-28 bg-neutral-soft dark:bg-slate-900/50 border-b border-gray-100 dark:border-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16 space-y-4">
                 <span class="text-xs font-bold tracking-widest text-brand uppercase">Müşteri Yorumları</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Değerli Görüşleriniz</h2>
-                <p class="text-gray-500 font-light text-sm max-w-lg mx-auto">Müşterilerimizin bizimle ilgili paylaştığı gerçek değerlendirmeler.</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Değerli Görüşleriniz</h2>
+                <p class="text-gray-500 dark:text-gray-400 font-light text-sm max-w-lg mx-auto">Müşterilerimizin bizimle ilgili paylaştığı gerçek değerlendirmeler.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Yorum 1 -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm flex flex-col justify-between">
+                <div class="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl p-8 shadow-sm flex flex-col justify-between transition-colors duration-300">
                     <div>
                         <div class="flex items-center gap-1 text-amber-400 mb-4">
                             <i class="fa-solid fa-star"></i>
@@ -443,18 +460,18 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-gray-500 text-xs leading-relaxed font-light mb-6">
+                        <p class="text-gray-500 dark:text-gray-300 text-xs leading-relaxed font-light mb-6">
                             "Blue Sky Sigorta Emrah bey ve ekibine çok teşekkür ederim, bütün sigorta işlemlerimi kendilerine yaptırıyorum, tecrübeli işini bilen uzman ekip, gönlüm rahat."
                         </p>
                     </div>
-                    <div class="pt-4 border-t border-gray-50 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-gray-900">Abbas Bey</span>
-                        <span class="text-[10px] text-gray-400">Google Yorumu</span>
+                    <div class="pt-4 border-t border-gray-50 dark:border-slate-800/60 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-gray-900 dark:text-white">Abbas Bey</span>
+                        <span class="text-[10px] text-gray-400 dark:text-gray-500">Google Yorumu</span>
                     </div>
                 </div>
 
                 <!-- Yorum 2 -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm flex flex-col justify-between">
+                <div class="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl p-8 shadow-sm flex flex-col justify-between transition-colors duration-300">
                     <div>
                         <div class="flex items-center gap-1 text-amber-400 mb-4">
                             <i class="fa-solid fa-star"></i>
@@ -463,18 +480,18 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-gray-500 text-xs leading-relaxed font-light mb-6">
+                        <p class="text-gray-500 dark:text-gray-300 text-xs leading-relaxed font-light mb-6">
                             "Kendilerinin ilgi ve alakasından ötürü teşekkür ederim, en uygun sigorta fiyatını bu firmadan aldım teşekkürler."
                         </p>
                     </div>
-                    <div class="pt-4 border-t border-gray-50 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-gray-900">İlhan Bey</span>
-                        <span class="text-[10px] text-gray-400">Google Yorumu</span>
+                    <div class="pt-4 border-t border-gray-50 dark:border-slate-800/60 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-gray-900 dark:text-white">İlhan Bey</span>
+                        <span class="text-[10px] text-gray-400 dark:text-gray-500">Google Yorumu</span>
                     </div>
                 </div>
 
                 <!-- Yorum 3 -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm flex flex-col justify-between">
+                <div class="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl p-8 shadow-sm flex flex-col justify-between transition-colors duration-300">
                     <div>
                         <div class="flex items-center gap-1 text-amber-400 mb-4">
                             <i class="fa-solid fa-star"></i>
@@ -483,18 +500,18 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-gray-500 text-xs leading-relaxed font-light mb-6">
+                        <p class="text-gray-500 dark:text-gray-300 text-xs leading-relaxed font-light mb-6">
                             "Aldığım hizmetten son derece memnun kaldım. Güler yüzlü, ilgili ve çözüm odaklı yaklaşımları sayesinde tüm işlemlerim kısa sürede tamamlandı. Profesyonel ve güven veren bir ekip. Herkese gönül rahatlığıyla tavsiye ederim. Teşekkürler."
                         </p>
                     </div>
-                    <div class="pt-4 border-t border-gray-50 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-gray-900">Baran Bey</span>
-                        <span class="text-[10px] text-gray-400">Google Yorumu</span>
+                    <div class="pt-4 border-t border-gray-50 dark:border-slate-800/60 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-gray-900 dark:text-white">Baran Bey</span>
+                        <span class="text-[10px] text-gray-400 dark:text-gray-500">Google Yorumu</span>
                     </div>
                 </div>
 
                 <!-- Yorum 4 -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm flex flex-col justify-between">
+                <div class="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl p-8 shadow-sm flex flex-col justify-between transition-colors duration-300">
                     <div>
                         <div class="flex items-center gap-1 text-amber-400 mb-4">
                             <i class="fa-solid fa-star"></i>
@@ -503,13 +520,13 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-gray-500 text-xs leading-relaxed font-light mb-6">
+                        <p class="text-gray-500 dark:text-gray-300 text-xs leading-relaxed font-light mb-6">
                             "Blue Sky Sigorta Emrah Bey'den sigortalarımızı yaptırdık. Aracımızla kaza yaptık tüm hasar süreçlerimizde yanımızda oldu ve her konuda bizi aydınlattı. Herkese tavsiye ederim."
                         </p>
                     </div>
-                    <div class="pt-4 border-t border-gray-50 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-gray-900">Yunus Emre Bey</span>
-                        <span class="text-[10px] text-gray-400">Google Yorumu</span>
+                    <div class="pt-4 border-t border-gray-50 dark:border-slate-800/60 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-gray-900 dark:text-white">Yunus Emre Bey</span>
+                        <span class="text-[10px] text-gray-400 dark:text-gray-500">Google Yorumu</span>
                     </div>
                 </div>
             </div>
@@ -517,63 +534,63 @@
     </section>
 
     <!-- Sıkça Sorulan Sorular Bölümü -->
-    <section class="py-24 bg-neutral-soft border-t border-b border-gray-100">
+    <section class="py-24 bg-neutral-soft dark:bg-slate-900/50 border-t border-b border-gray-100 dark:border-slate-900 transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16 space-y-4">
                 <span class="text-xs font-bold tracking-widest text-brand uppercase">Bilgi Köşesi</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Sıkça Sorulan Sorular</h2>
-                <p class="text-gray-500 font-light text-sm max-w-lg mx-auto">Sigorta süreçleriyle ilgili aklınıza takılabilecek en yaygın soruların yanıtlarını bir araya getirdik.</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Sıkça Sorulan Sorular</h2>
+                <p class="text-gray-500 dark:text-gray-400 font-light text-sm max-w-lg mx-auto">Sigorta süreçleriyle ilgili aklınıza takılabilecek en yaygın soruların yanıtlarını bir araya getirdik.</p>
             </div>
 
             <!-- Accordion Container -->
             <div class="space-y-4">
                 <!-- Soru 1 -->
-                <div class="border border-gray-100 bg-white rounded-2xl overflow-hidden transition-all duration-300">
-                    <button onclick="toggleFaq(1)" class="w-full px-6 py-5 flex justify-between items-center text-left text-gray-900 hover:text-brand font-semibold text-sm transition-colors">
+                <div class="border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(1)" class="w-full px-6 py-5 flex justify-between items-center text-left text-gray-900 dark:text-white hover:text-brand dark:hover:text-brand font-semibold text-sm transition-colors">
                         <span>Zorunlu Trafik Sigortası ile Kasko arasındaki temel fark nedir?</span>
                         <span id="faq-icon-1" class="text-gray-400 text-lg transition-transform duration-300"><i class="fa-solid fa-plus"></i></span>
                     </button>
                     <div id="faq-content-1" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <p class="px-6 pb-6 text-xs text-gray-500 font-light leading-relaxed">
+                        <p class="px-6 pb-6 text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed">
                             Trafik Sigortası yasal olarak yaptırılması zorunlu bir poliçedir ve kaza anında karşı tarafa verdiğiniz maddi ve bedeni zararları karşılar. Kasko ise isteğe bağlıdır ve kaza, çalınma, doğal afet gibi durumlarda doğrudan sizin kendi aracınızda oluşan hasarları teminat altına alır.
                         </p>
                     </div>
                 </div>
 
                 <!-- Soru 2 -->
-                <div class="border border-gray-100 bg-white rounded-2xl overflow-hidden transition-all duration-300">
-                    <button onclick="toggleFaq(2)" class="w-full px-6 py-5 flex justify-between items-center text-left text-gray-900 hover:text-brand font-semibold text-sm transition-colors">
+                <div class="border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(2)" class="w-full px-6 py-5 flex justify-between items-center text-left text-gray-900 dark:text-white hover:text-brand dark:hover:text-brand font-semibold text-sm transition-colors">
                         <span>DASK (Zorunlu Deprem Sigortası) neleri kapsar?</span>
                         <span id="faq-icon-2" class="text-gray-400 text-lg transition-transform duration-300"><i class="fa-solid fa-plus"></i></span>
                     </button>
                     <div id="faq-content-2" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <p class="px-6 pb-6 text-xs text-gray-500 font-light leading-relaxed">
+                        <p class="px-6 pb-6 text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed">
                             DASK, depremin ve deprem sonucu meydana gelen yangın, tsunami, yer kayması ve infilak gibi afetlerin binanıza vereceği maddi zararları teminat altına alır. Binanın temelleri, ana duvarları, bağımsız bölümleri ayıran ortak duvarları ve tavan/tabanları bu güvence kapsamındadır.
                         </p>
                     </div>
                 </div>
 
                 <!-- Soru 3 -->
-                <div class="border border-gray-100 bg-white rounded-2xl overflow-hidden transition-all duration-300">
-                    <button onclick="toggleFaq(3)" class="w-full px-6 py-5 flex justify-between items-center text-left text-gray-900 hover:text-brand font-semibold text-sm transition-colors">
+                <div class="border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(3)" class="w-full px-6 py-5 flex justify-between items-center text-left text-gray-900 dark:text-white hover:text-brand dark:hover:text-brand font-semibold text-sm transition-colors">
                         <span>Olası bir hasar anında ne yapmam gerekir?</span>
                         <span id="faq-icon-3" class="text-gray-400 text-lg transition-transform duration-300"><i class="fa-solid fa-plus"></i></span>
                     </button>
                     <div id="faq-content-3" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <p class="px-6 pb-6 text-xs text-gray-500 font-light leading-relaxed">
+                        <p class="px-6 pb-6 text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed">
                             Hasar oluştuktan sonra en kısa sürede (mümkünse ilk 5 iş günü içinde) hasar tespiti için gerekli belgeleri (kaza tespit tutanağı, alkol raporu, hasar fotoğrafları vb.) hazırlamalı ve hasar ihbarında bulunmalısınız. Sürecin her adımında 7/24 hizmet sunan acentemiz üzerinden destek alabilirsiniz.
                         </p>
                     </div>
                 </div>
 
                 <!-- Soru 4 -->
-                <div class="border border-gray-100 bg-white rounded-2xl overflow-hidden transition-all duration-300">
-                    <button onclick="toggleFaq(4)" class="w-full px-6 py-5 flex justify-between items-center text-left text-gray-900 hover:text-brand font-semibold text-sm transition-colors">
+                <div class="border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(4)" class="w-full px-6 py-5 flex justify-between items-center text-left text-gray-900 dark:text-white hover:text-brand dark:hover:text-brand font-semibold text-sm transition-colors">
                         <span>Sigorta prim ödemelerini nasıl yapabilirim?</span>
                         <span id="faq-icon-4" class="text-gray-400 text-lg transition-transform duration-300"><i class="fa-solid fa-plus"></i></span>
                     </button>
                     <div id="faq-content-4" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <p class="px-6 pb-6 text-xs text-gray-500 font-light leading-relaxed">
+                        <p class="px-6 pb-6 text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed">
                             Poliçe ödemelerinizi anlaşmalı bankaların kredi kartları ile tek çekim veya vade farksız taksit seçenekleriyle gerçekleştirebilirsiniz. Ayrıca havale/EFT yoluyla da prim ödemelerinizi hızlıca tamamlayabilirsiniz.
                         </p>
                     </div>
@@ -583,42 +600,42 @@
     </section>
 
     <!-- Teklif Al / Satış Formu Bölümü -->
-    <section id="teklif" class="py-28 bg-white">
+    <section id="teklif" class="py-28 bg-white dark:bg-slate-950 transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16 space-y-4">
                 <span class="text-xs font-bold tracking-widest text-brand uppercase">Teklif Formu</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Kişiselleştirilmiş Teklif Talebi</h2>
-                <p class="text-gray-500 font-light text-sm max-w-lg mx-auto">Bilgilerinizi eksiksiz girin, uzman danışmanlarımız size en asil teklifleri sunsun.</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Kişiselleştirilmiş Teklif Talebi</h2>
+                <p class="text-gray-500 dark:text-gray-400 font-light text-sm max-w-lg mx-auto">Bilgilerinizi eksiksiz girin, uzman danışmanlarımız size en asil teklifleri sunsun.</p>
             </div>
 
             <!-- Satış Formu -->
-            <div class="bg-white border border-gray-100 rounded-2xl p-8 sm:p-16 shadow-xl relative">
+            <div class="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl p-8 sm:p-16 shadow-xl dark:shadow-slate-950/50 relative transition-colors duration-300">
                 <form id="insurance-form" onsubmit="handleFormSubmit(event)" class="space-y-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
                         <!-- Ad Soyad -->
                         <div>
-                            <label for="fullname" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Ad Soyad</label>
-                            <input type="text" id="fullname" name="fullname" required placeholder="Örn: Ahmet Yılmaz" class="w-full px-5 py-4 rounded-xl border border-gray-100 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition-all placeholder:text-gray-300 font-light text-sm bg-neutral-soft">
+                            <label for="fullname" class="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">Ad Soyad</label>
+                            <input type="text" id="fullname" name="fullname" required placeholder="Örn: Ahmet Yılmaz" class="w-full px-5 py-4 rounded-xl border border-gray-100 dark:border-slate-800 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition-all placeholder:text-gray-300 dark:placeholder:text-gray-600 font-light text-sm bg-neutral-soft dark:bg-slate-950 text-gray-700 dark:text-gray-200">
                         </div>
 
                         <!-- Telefon -->
                         <div>
-                            <label for="phone" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Telefon Numarası</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="Örn: 0555 123 4567" class="w-full px-5 py-4 rounded-xl border border-gray-100 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition-all placeholder:text-gray-300 font-light text-sm bg-neutral-soft">
+                            <label for="phone" class="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">Telefon Numarası</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="Örn: 0555 123 4567" class="w-full px-5 py-4 rounded-xl border border-gray-100 dark:border-slate-800 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition-all placeholder:text-gray-300 dark:placeholder:text-gray-600 font-light text-sm bg-neutral-soft dark:bg-slate-950 text-gray-700 dark:text-gray-200">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
                         <!-- E-posta -->
                         <div>
-                            <label for="email" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">E-posta Adresiniz</label>
-                            <input type="email" id="email" name="email" required placeholder="ahmet@ornek.com" class="w-full px-5 py-4 rounded-xl border border-gray-100 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition-all placeholder:text-gray-300 font-light text-sm bg-neutral-soft">
+                            <label for="email" class="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">E-posta Adresiniz</label>
+                            <input type="email" id="email" name="email" required placeholder="ahmet@ornek.com" class="w-full px-5 py-4 rounded-xl border border-gray-100 dark:border-slate-800 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition-all placeholder:text-gray-300 dark:placeholder:text-gray-600 font-light text-sm bg-neutral-soft dark:bg-slate-950 text-gray-700 dark:text-gray-200">
                         </div>
 
                         <!-- Sigorta Türü -->
                         <div>
-                            <label for="insurance_type" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Sigorta Türü</label>
-                            <select id="insurance_type" name="insurance_type" required class="w-full px-5 py-4 rounded-xl border border-gray-100 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition-all text-gray-600 font-light text-sm bg-neutral-soft">
+                            <label for="insurance_type" class="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">Sigorta Türü</label>
+                            <select id="insurance_type" name="insurance_type" required class="w-full px-5 py-4 rounded-xl border border-gray-100 dark:border-slate-800 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition-all text-gray-600 dark:text-gray-300 font-light text-sm bg-neutral-soft dark:bg-slate-950">
                                 <option value="" disabled selected>Seçiniz...</option>
                                 <option value="Araç Sigortası">Araç Sigortası (Kasko / Trafik)</option>
                                 <option value="Sağlık Sigortası">Sağlık Sigortası</option>
@@ -631,16 +648,16 @@
 
                     <!-- Detaylar -->
                     <div>
-                        <label for="details" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Ek Detaylar (TC Kimlik No / Plaka / Notlar)</label>
-                        <textarea id="details" name="details" rows="4" placeholder="Teklifinizi özelleştirmemize yardımcı olacak diğer bilgileri buraya yazabilirsiniz..." class="w-full px-5 py-4 rounded-xl border border-gray-100 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition-all placeholder:text-gray-300 font-light text-sm bg-neutral-soft"></textarea>
+                        <label for="details" class="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">Ek Detaylar (TC Kimlik No / Plaka / Notlar)</label>
+                        <textarea id="details" name="details" rows="4" placeholder="Teklifinizi özelleştirmemize yardımcı olacak diğer bilgileri buraya yazabilirsiniz..." class="w-full px-5 py-4 rounded-xl border border-gray-100 dark:border-slate-800 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition-all placeholder:text-gray-300 dark:placeholder:text-gray-600 font-light text-sm bg-neutral-soft dark:bg-slate-950 text-gray-700 dark:text-gray-200"></textarea>
                     </div>
 
                     <!-- KVKK Bilgilendirme -->
                     <div class="flex items-start">
                         <div class="flex items-center h-5">
-                            <input id="kvkk" name="kvkk" required type="checkbox" class="h-4 w-4 text-brand focus:ring-brand border-gray-200 rounded">
+                            <input id="kvkk" name="kvkk" required type="checkbox" class="h-4 w-4 text-brand focus:ring-brand border-gray-200 dark:border-slate-800 rounded dark:bg-slate-950">
                         </div>
-                        <div class="ml-3 text-xs text-gray-400 leading-tight">
+                        <div class="ml-3 text-xs text-gray-400 dark:text-gray-500 leading-tight">
                             <label for="kvkk" class="font-light"><a href="kvkk/" class="text-brand hover:underline font-normal">KVKK Aydınlatma Metnini</a> okudum, kabul ediyorum.</label>
                         </div>
                     </div>
@@ -734,6 +751,37 @@
                 icon.className = "fa-solid fa-bars text-xl";
             }
         }
+
+        // Karanlık / Aydınlık Mod Geçişi
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateDarkModeButtons(false);
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateDarkModeButtons(true);
+            }
+        }
+
+        function updateDarkModeButtons(isDark) {
+            const desktopIcon = document.getElementById('dark-mode-icon-desktop');
+            const mobileIcon = document.getElementById('dark-mode-icon-mobile');
+            if (isDark) {
+                if (desktopIcon) desktopIcon.className = "fa-solid fa-sun text-lg";
+                if (mobileIcon) mobileIcon.className = "fa-solid fa-sun";
+            } else {
+                if (desktopIcon) desktopIcon.className = "fa-solid fa-moon text-lg";
+                if (mobileIcon) mobileIcon.className = "fa-solid fa-moon";
+            }
+        }
+
+        // DOM yüklendiğinde buton ikon durumunu ayarla
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            updateDarkModeButtons(isDark);
+        });
 
         // Hizmet kartından tıklayınca formu seçili sigorta türü ile otomatik doldurma
         function selectInsuranceType(type) {
