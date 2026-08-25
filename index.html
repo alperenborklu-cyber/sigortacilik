@@ -191,6 +191,7 @@
             <img id="hero-bg-0" class="absolute inset-0 w-full h-full object-cover object-[70%_center] md:object-center transition-opacity duration-1000 opacity-100" src="trust_hero_bg_clean.webp" alt="Blue Sky Sigorta Güvenli Gelecek">
             <img id="hero-bg-1" class="absolute inset-0 w-full h-full object-cover object-[70%_center] md:object-center transition-opacity duration-1000 opacity-0" src="trust_hero_3.webp" alt="Huzurlu Yuva">
             <img id="hero-bg-2" class="absolute inset-0 w-full h-full object-cover object-[70%_center] md:object-center transition-opacity duration-1000 opacity-0" src="trust_hero_4.webp" alt="Aile Güvencesi">
+            <img id="hero-bg-3" class="absolute inset-0 w-full h-full object-cover object-[70%_center] md:object-center transition-opacity duration-1000 opacity-0" src="hero section_new.webp" alt="Gelecek Güvencesi">
         </div>
         <!-- Karartma ve Renk Geçiş Overlay (Yazıların okunması için solda daha yoğun karartma) -->
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/60 to-transparent -z-10"></div>
@@ -945,7 +946,7 @@
 
         // Hero Background Carousel Logic
         let currentHeroBg = 0;
-        const totalHeroBgs = 3;
+        const totalHeroBgs = 4;
         function rotateHeroBg() {
             const nextHeroBg = (currentHeroBg + 1) % totalHeroBgs;
             const currentEl = document.getElementById(`hero-bg-${currentHeroBg}`);
