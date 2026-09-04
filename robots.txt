@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sigortacilik.vercel.app/sitemap.xml
+Sitemap: https://www.blueskysigorta.com.tr/sitemap.xml

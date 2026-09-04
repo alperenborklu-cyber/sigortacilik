@@ -693,7 +693,7 @@
             if (!activePostId) return;
             const post = blogPosts.find(p => p.id === activePostId);
             if (post) {
-                const text = encodeURIComponent(`Blue Sky Sigorta Blog: "${post.title}" yazısını mutlaka okuyun! https://sigortacilik.vercel.app/blog/`);
+                const text = encodeURIComponent(`Blue Sky Sigorta Blog: "${post.title}" yazısını mutlaka okuyun! https://www.blueskysigorta.com.tr/blog/`);
                 window.open(`https://wa.me/?text=${text}`, '_blank');
             }
         }
